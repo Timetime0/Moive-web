@@ -1,25 +1,71 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Header from './Components/Header/Header';
+import Footer from './Components/Footer/Footer';
+import { ThemeProvider } from 'styled-components'
+import {darkTheme} from './StyledComponent/theme/darkTheme'
+import Waiting from './Pages/Waiting/Waiting';
+import {clientRouter} from './config/router.config'
+import { connect } from 'react-redux';
+import { Component } from 'react';
+import { LOGIN_ADMIN } from './Redux/Types/auth-type';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  RenderRouterList = () => {
+    return clientRouter.map((item,index)=>{
+      return  <Route key={index} exact={item.exact} path={item.path} component={item.component}/>
+    })    
+  }
+
+  constructor(props){
+    super(props)
+    this.state= {
+      user : 1,
+    }
+  }
+  
+
+
+  render(){
+    return (
+      <ThemeProvider theme={darkTheme}>
+        <BrowserRouter>
+          <Header />
+          <Waiting/>
+          <Switch>
+            {this.RenderRouterList()}
+            {/* <Route axact path='/admin' render={() => (<Redirect to="/admin/login" />)}/> */}
+          </Switch>
+          <Footer />
+        </BrowserRouter>
+      </ThemeProvider>
+  
+    );
+  }
+  
+  getUserFromLocal = () => {
+    const userAdmin = localStorage.getItem('admin')
+    if(userAdmin){
+      this.props.dispatch({
+        type:LOGIN_ADMIN,
+        data:JSON.parse(userAdmin)
+      })
+    }  
+  } 
+
+    componentDidMount(){
+        this.getUserFromLocal()
+    }
 }
 
-export default App;
+const mapStateToProps = (state)=>{
+  return{
+    admin: state.userReducer.user.admin
+  }
+}
+
+
+export default connect(mapStateToProps) (App);
+
+

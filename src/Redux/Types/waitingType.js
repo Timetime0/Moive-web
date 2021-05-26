@@ -1,0 +1,3 @@
+export const DISPLAY_WAITING = 'DISPLAY_WAITING'
+export const HIDDEN_WAITING = 'HIDDEN_WAITING'
+
