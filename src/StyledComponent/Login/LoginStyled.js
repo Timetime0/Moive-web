@@ -11,7 +11,7 @@ export const ContainerLogin = styled.section`
 `
 
 export const Content = styled.div`
-    margin-bottom: 10vh;
+    margin-bottom: 5vh;
     width: 100%;
     position: relative;
     min-height: 100vh;
@@ -38,10 +38,11 @@ export const BgImage = styled.div`
 `
 
 export const DivFrameLogin = styled.div`
-    width: 25%;
     background-color:rgb(243 101 34/ 0.4);
     border-radius: 10px;
     padding: 15px   ;
+    margin-bottom: 90px;
+
 `
 export const DivImgLogin = styled.div`
     margin-bottom: 10px;
@@ -85,7 +86,6 @@ export const DivModal = styled.div`
     display:block;
     background:#111;
 
-
 `
 
 export const PopupCu = styled(Popup)`
@@ -96,6 +96,70 @@ export const PopupCu = styled(Popup)`
             font-size:50px;
             color: ${props => props.theme.btnPrimaryColor}
         }
+        @media screen and (max-width:1200px){
+            width: 60%;
+        }
+        @media screen and (max-width:992px){
+            width: 75%;
+        }   
+        @media screen and (max-width:768px){
+            width: 80%;
+        } 
+        @media screen and (max-width:576px){
+            width: 95%;
+        } 
     }
     
+`
+export const ButtonModalSignUp = styled.button`
+    position: absolute;
+    top:0;
+    right:0;
+`
+
+
+export const DivModalLogin = styled.div`
+    max-width:50%;
+    margin-top: 40px;
+    width:70%;
+    position:relative;
+    @media screen and (max-width:1200px){
+        max-width:60%;
+    }
+    @media screen and (max-width:992px){
+        max-width:75%;
+        
+    }
+    @media screen and (max-width:768px){
+        max-width:80%;
+        width:100%;
+        
+    }
+    @media screen and (max-width:576px){
+        max-width:100%;
+        width:100%;
+        
+    }
+    
+`
+
+export const DivModalContent = styled.div`
+    width: 100%;
+    background-color: #111;
+
+`
+
+export const ButtonModalLogin = styled.div`
+    position:absolute;
+    right:0px;
+    top:-20px;
+    color: ${props=>props.theme.btnPrimaryColor};
+    font-size:50px;
+    z-index:3;
+`
+
+export const ButtonCloseModalLogin = styled.button`
+    position: absolute;
+    bottom: 29px;
+    right: 230px;
 `

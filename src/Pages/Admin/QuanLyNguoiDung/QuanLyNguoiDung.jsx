@@ -4,7 +4,6 @@ import { DELETE_NGUOIDUNG_SAGA, FIND_DATA_NGUOIDUNG_SAGA, GET_DATA_NGUOIDUNG_SAG
 import { ButtonAd, ButtonThem, DivModalAd, Li, Trang } from '../../../StyledComponent/Admin/QuanLyNguoiDung/quanLyNguoiDung'
 import { ButtonCloseAd } from '../../../StyledComponent/Login/DangKyStyled'
 import Form from '../QuanLyNguoiDung/Form'
-import $ from 'jquery';
 // import FindNguoiDung from './FindNguoiDung'
 class QuanLyNguoiDung extends Component {
 
@@ -16,7 +15,6 @@ class QuanLyNguoiDung extends Component {
             findHoTen: '',
             status: '',
             user: '',
-            count: 0,
         }
     }
 
@@ -85,7 +83,9 @@ class QuanLyNguoiDung extends Component {
         })
         this.props.dispatch({
             type: DELETE_NGUOIDUNG_SAGA,
-            taiKhoan: taiKhoan
+            taiKhoan: taiKhoan,
+            soTrang: this.state.selected,
+            soPhanTuTrang: 20,
         })
 
 
@@ -97,20 +97,18 @@ class QuanLyNguoiDung extends Component {
        
         this.setState({
             status: 'find',
-            count: this.state.count +1
         })
-
-        // $('#find-user').addEventListener('click', this.renderDataFinding())
 
         const newStr = this.state.findHoTen.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim().replace(/\s+/g,' ')
         this.props.dispatch({
             type: FIND_DATA_NGUOIDUNG_SAGA,
             tuKhoa: newStr,
         })
+      
     }
 
     renderDataFinding = ()=>{
-        console.log("click in button")
+        
     }
 
 
@@ -198,7 +196,7 @@ class QuanLyNguoiDung extends Component {
                                 <ButtonAd type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">x</span>
                                 </ButtonAd>
-                                <Form status={this.state.status} user={this.state.user} />
+                                <Form status={this.state.status} user={this.state.user} selected={this.state.selected}/>
                                 <ButtonCloseAd type="button" className="btn btn-danger" data-dismiss="modal">Close</ButtonCloseAd>
                             </div>
                         </div>
@@ -218,24 +216,12 @@ class QuanLyNguoiDung extends Component {
         })
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
-
-        if (this.props.danhSach.items !== prevProps?.danhSach.items) {
-            // this.setState({
-            //     danhSach:this.props.danhSach.items
-            // })  
-           
-            if(this.state.status !== "find"){
-                // this.props.dispatch({
-                //     type: GET_DATA_NGUOIDUNG_THEOTRANG_SAGA,
-                //     soTrang: this.state.selected,
-                //     soPhanTuTrang: 20,
-                // })
-            }else{
-                this.forceUpdate()
+        if (this.props.danhSach.items !== prevProps.danhSach.items) {
+            if(this.state.status === "find"){   
+               this.forceUpdate()
             }
         }
     }
-
 }
 
 

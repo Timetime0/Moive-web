@@ -105,6 +105,11 @@ function* deteleDataPhim(action){
                 icon: 'success',
                 title:'Đã xóa',
             })
+            yield put({
+                type:GET_DATA_PHIM_THEOTRANG_SAGA,
+                soTrang:action.soTrang,
+                soPhanTuTrang:action.soPhanTuTrang,
+            })
         }
 
     }catch(err){
@@ -122,8 +127,6 @@ export function* theoDoiActionDeleteDataPhimApi() {
 
 
 // thêm phim
-
-
 function* addImgDataPhim(action){
     try{
         let form_data = new FormData()
@@ -140,6 +143,12 @@ function* addImgDataPhim(action){
                 icon: 'success',
                 title:'Thêm thành công',
             })
+            yield put({
+                type:GET_DATA_PHIM_THEOTRANG_SAGA,
+                soTrang:action.soTrang,
+                soPhanTuTrang:action.soPhanTuTrang,
+            })
+            
         }
     }catch(err){
         console.log(err)
@@ -172,6 +181,11 @@ function* updataImgDataPhim(action){
                 icon: 'success',
                 title:'Cập nhật thành công',
             })
+            yield put({
+                type:GET_DATA_PHIM_THEOTRANG_SAGA,
+                soTrang:action.soTrang,
+                soPhanTuTrang:action.soPhanTuTrang,
+            })
         }
 
     }catch(err){
@@ -196,6 +210,11 @@ function* updataDataPhim(action){
             Swal.fire({
                 icon: 'success',
                 title:'Cập nhật thành công',
+            })
+            yield put({
+                type:GET_DATA_PHIM_THEOTRANG_SAGA,
+                soTrang:action.soTrang,
+                soPhanTuTrang:action.soPhanTuTrang,
             })
         }
 

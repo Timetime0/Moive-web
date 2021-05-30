@@ -1,6 +1,6 @@
 import { delay, call, put, takeLatest } from 'redux-saga/effects'
-import { GET_DATA_NGUOIDUNG_SAGA, GET_DATA_NGUOIDUNG_THEOTRANG_SAGA, GET_LENGTH_DATA_NGUOIDUNG, GET_DATA_NGUOIDUNG_THEOTRANG, FIND_DATA_NGUOIDUNG_THEOTRANG, FIND_DATA_NGUOIDUNG_THEOTRANG_SAGA, FIND_DATA_NGUOIDUNG, FIND_DATA_NGUOIDUNG_SAGA, DELETE_NGUOIDUNG_SAGA, ADD_NGUOIDUNG_SAGA, UPDATE_NGUOIDUNG_SAGA } from '../../Types/Admin/quanLyNguoiDungType'
-import {addDataNguoiDung, deleteDataNguoiDung, findDataNguoiDung, findDataNguoiDungTheoTrang, getDataNguoiDung, getDataNguoiDungPhanTrang, updateDataNguoiDung} from '../../../Services/QuanLyNguoiDung/QuanLyNguoiDung'
+import { GET_DATA_NGUOIDUNG_SAGA, GET_DATA_NGUOIDUNG_THEOTRANG_SAGA, GET_LENGTH_DATA_NGUOIDUNG, GET_DATA_NGUOIDUNG_THEOTRANG, FIND_DATA_NGUOIDUNG_THEOTRANG, FIND_DATA_NGUOIDUNG_THEOTRANG_SAGA, FIND_DATA_NGUOIDUNG, FIND_DATA_NGUOIDUNG_SAGA, DELETE_NGUOIDUNG_SAGA, ADD_NGUOIDUNG_SAGA, UPDATE_NGUOIDUNG_SAGA, GET_IN4_CLIENT, GET_IN4_CLIENT_SAGA } from '../../Types/Admin/quanLyNguoiDungType'
+import {addDataNguoiDung, deleteDataNguoiDung, findDataNguoiDung, findDataNguoiDungTheoTrang, getDataNguoiDung, getDataNguoiDungPhanTrang, thongTinClient, updateDataNguoiDung} from '../../../Services/QuanLyNguoiDung/QuanLyNguoiDung'
 import { DISPLAY_WAITING, HIDDEN_WAITING } from '../../Types/waitingType'
 import Swal from 'sweetalert2'
 
@@ -108,6 +108,12 @@ function* deleteUserApi(action){
                 icon: 'success',
                 title:'Đã xóa',
             })
+
+            yield put({
+                type: GET_DATA_NGUOIDUNG_THEOTRANG_SAGA,
+                soTrang: action.soTrang,
+                soPhanTuTrang:action.soPhanTuTrang,
+            })
         }
         
     }catch(err){
@@ -143,6 +149,12 @@ function* addUserApi(action){
                 <div className="text-left"><span className="font-weight">Mã loại người dùng:</span> ${action.nguoiDung.maLoaiNguoiDung}</div>
                 <div className="text-left"><span className="font-weight">Họ Tên: </span>${action.nguoiDung.hoTen}</div>
                 `
+            })
+
+            yield put({
+                type: GET_DATA_NGUOIDUNG_THEOTRANG_SAGA,
+                soTrang: action.soTrang,
+                soPhanTuTrang:action.soPhanTuTrang,
             })
         }
     }catch(err){
@@ -180,6 +192,13 @@ function* updateUserApi(action){
                 <div className="text-left"><span className="font-weight">Họ Tên: </span>${action.nguoiDung.hoTen}</div>
                 `
             })
+
+            yield put({
+                type: GET_DATA_NGUOIDUNG_THEOTRANG_SAGA,
+                soTrang: action.soTrang,
+                soPhanTuTrang:action.soPhanTuTrang,
+            })
+
         }
     }catch(err){
         console.log(err.response.data)
@@ -193,4 +212,32 @@ function* updateUserApi(action){
 
 export function* theoDoiActionUpdateNguoiDungApi() {
     yield takeLatest(UPDATE_NGUOIDUNG_SAGA, updateUserApi)
+}
+
+
+
+function* getIn4Client(action){
+
+    yield put({
+        type: DISPLAY_WAITING
+    })
+    try{
+        let result = yield call(()=>{
+            return thongTinClient(action.object)
+        })
+        yield put({
+            type: GET_IN4_CLIENT,
+            data: result.data
+        })
+        
+    }catch(err){
+        console.log(err.response.data)
+    }
+    yield put({
+        type: HIDDEN_WAITING
+    })
+}
+
+export function* theoDoiActionGetIn4Client() {
+    yield takeLatest(GET_IN4_CLIENT_SAGA, getIn4Client)
 }

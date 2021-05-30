@@ -8,7 +8,7 @@ import Waiting from './Pages/Waiting/Waiting';
 import {clientRouter} from './config/router.config'
 import { connect } from 'react-redux';
 import { Component } from 'react';
-import { LOGIN_ADMIN } from './Redux/Types/auth-type';
+import { LOGIN_ADMIN, LOGIN_USER } from './Redux/Types/auth-type';
 
 
 class App extends Component {
@@ -46,12 +46,20 @@ class App extends Component {
   
   getUserFromLocal = () => {
     const userAdmin = localStorage.getItem('admin')
+    const userClient = localStorage.getItem('client')
     if(userAdmin){
       this.props.dispatch({
         type:LOGIN_ADMIN,
         data:JSON.parse(userAdmin)
       })
-    }  
+    } 
+    if(userClient){
+      this.props.dispatch({
+        type: LOGIN_USER,
+        data: JSON.parse(userClient)
+      })
+    }
+
   } 
 
     componentDidMount(){

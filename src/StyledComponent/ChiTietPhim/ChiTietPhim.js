@@ -6,10 +6,10 @@ export const ImgChiTiet = styled.img`
         width:95%;
     }
     @media screen and (max-width:768px){
-        width:100%;
+        width:70%;
     }
     @media screen and (max-width:576px){
-        width:60%;
+        width:40%;
     }
 `
 
@@ -23,11 +23,11 @@ export const ImgBgChiTiet = styled.img`
 export const DivBgChiTiet = styled.div`
     position:relative;
     opacity:1;
-    background-image: url(${(props)=>props.imgUrl});
+    background-image: url('${(props)=>props.imgUrl}');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center; 
-    height: 630px;
+    height: 80vh;
     width:100%;
     &:after{
             content: '';
@@ -38,22 +38,14 @@ export const DivBgChiTiet = styled.div`
             width: 100%;
         }
     }
-    @media screen and (max-width:1200px){
-        height: 550px;
-    }
-    @media screen and (max-width:992px){
-        height: 540px;
-    }
-    @media screen and (max-width:768px){
-        height: 740px;
-    }
     @media screen and (max-width:576px){
-        height: 940px;
+        height: 100vh;
     }
+
 `
 
 export const DivHeader = styled.div`
-    padding:100px 0;
+    padding-top:10px;
     @media screen and (max-width:768px){
         padding-bottom:10px
     }
@@ -111,6 +103,11 @@ export const CircleIn = styled.div`
     border-radius:50%;
     border: 1px solid transparent;
     background-color:rgba(0,0,0,.4) ;
+    @media screen and (max-width:576px){
+         width: 80px;
+        height: 80px;
+        margin-left:30px !important;
+    }
 `
 
 export const CirclePut = styled.div`
@@ -124,6 +121,10 @@ export const CirclePut = styled.div`
     transform:translate(-50%,-50%);
     background-color:rgba(0,0,0,.4);
     z-index:5;
+    @media screen and (max-width:576px){
+        width: 60px;
+        height:60px;
+    }
 `
 
 
@@ -133,7 +134,10 @@ export const Rate = styled.div`
     font-size:50px;
     top:50%;
     left:50%;
-    transform:translate(-50%,-50%)
+    transform:translate(-50%,-50%);
+    @media screen and (max-width:576px){
+        font-size:30px;
+    }
 `
 export const CircleBar = styled.div`
     position: absolute;
@@ -175,16 +179,11 @@ export const Star = styled.div`
 `
 
 export const DivBody = styled.div`
-    // padding-top:240px !important; 
+    z-index: 10;
     background-color: #7e3119;
     font-weight:bolder;
     .nav-link.active{
         background-color:${props=>props.theme.btnPrimaryColor};
-    }
-    @media screen and (max-width:576px){
-        padding-top:70px !important;
-
-        // padding-top:310px !important;
     }
 `
 
@@ -203,7 +202,24 @@ export const H1Phim = styled.h1`
 export const SpanContent = styled.span`
     @media screen and (max-width:576px){
         display:block !important;
-        padding-top:10px;
+        padding-top:0px;
         text-align:center;
+    }
+`
+
+export const DivFrameCarousel = styled.div`
+    height: 80vh;
+    @media screen and (max-width:576px){
+        height: 100vh;
+    }
+`
+
+export const DivFrameInnerCarousel = styled.div`
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    @media screen and (max-width:576px){
+       padding-top: 50px;
     }
 `

@@ -9,7 +9,6 @@ class FormPhim extends Component {
 
     constructor(props) {
         super(props)
-        this.myRef = React.createRef();
         this.state = {
             phim: {
                 maPhim: '',
@@ -29,26 +28,6 @@ class FormPhim extends Component {
 
     onChangeValue = async (e) => {
         const { name, value } = e.target
-        console.log(this.state.phim)
-        console.log(this.myRef)
-        const newTrailer = this.myRef.currentSrc
-        let fileReader = new FileReader()
-        let response = await fetch(`${this.state.phim.hinhAnh}`);
-        console.log(response)
-
-        // let request = new XMLHttpRequest();
-        // request.open('GET', this.state.phim.hinhAnh, true);
-        // request.responseType = 'blob';
-        // request.onload = function () {
-        //     var reader = new FileReader();
-        //     console.log(reader)
-        //     reader.readAsDataURL(request.response);
-        //     reader.onload = function (e) {
-        //         console.log('DataURL:', e.target.result);
-        //     };
-        // };
-        // request.send();
-
         if (name === 'trailer') {
             let newTrailer = value.replace('watch?v=', 'embed/')
             this.setState({
@@ -76,12 +55,16 @@ class FormPhim extends Component {
         if (status === "fix") {
             this.props.dispatch({
                 type: UPDATE_IMG_PHIM_SAGA,
-                phim: this.state.phim
+                phim: this.state.phim,
+                soTrang: this.props.selected,
+                soPhanTuTrang: 5,
             })
         } else {
             this.props.dispatch({
                 type: ADD_IMG_PHIM_SAGA,
-                phim: this.state.phim
+                phim: this.state.phim,
+                soTrang: this.props.trangCuoi,
+                soPhanTuTrang: 5,
             })
         }
     }
@@ -114,10 +97,10 @@ class FormPhim extends Component {
                     <FormPhimAd id="booking-form" onSubmit={(event) => this.handleSubmit(event)} >
                         <div className='row'>
                             <h3 className="text-center col-12">{status === "fix" ? 'Cập nhật phim' : 'Thêm phim'}</h3>
-                            <FormInput className="form-group form-input col-6">
-                                <input onChange={this.onChangeValue} type="text" name="maPhim" id="maPhim" value={this.state.phim.maPhim} required autoComplete='off' />
+                            {/* <FormInput className="form-group form-input col-6"  >
+                                <input disabled onChange={this.onChangeValue} type="text" name="maPhim" id="maPhim" value={this.state.phim.maPhim} required autoComplete='off' />
                                 <label htmlFor="maPhim" className="form-label">Mã phim</label>
-                            </FormInput>
+                            </FormInput> */}
                             <FormInput className="form-group form-input  col-6">
                                 <input onChange={this.onChangeValue} type="text" name="tenPhim" id="tenPhim" value={this.state.phim.tenPhim} required autoComplete='off' />
                                 <label htmlFor="tenPhim" className="form-label">Tên Phim</label>
@@ -133,7 +116,7 @@ class FormPhim extends Component {
                                 <label htmlFor="trailer" className="form-label">Trailer (Đường Link)</label>
                             </FormInput>
 
-                            <FormInput className="form-group form-input displayNone col-6" autofocus="false">
+                            <FormInput className="form-group form-input displayNone col-6" autoFocus={false}>
                                 <input type="file" name="hinhAnh" id="hinhAnh" required onChange={event => {
                                     this.getNameImg(event)
                                 }} style={{ display: 'none' }} />
@@ -141,7 +124,7 @@ class FormPhim extends Component {
                                 <DivFile type="button" className="">
                                     <div onClick={() => $('#hinhAnh').click()} className="btn btn-success">Chọn hình ảnh</div>
                                     {/* <PFile>{this.state.nameHinhAnh}</PFile> */}
-                                    {this.state.basa64HinhAnh ? <ImgFile ref={this.myRef} src={this.state.basa64HinhAnh} alt="true" /> : ""}
+                                    {this.state.basa64HinhAnh ? <ImgFile  src={this.state.basa64HinhAnh} alt="true" /> : ""}
                                 </DivFile>
 
                             </FormInput>
@@ -174,21 +157,15 @@ class FormPhim extends Component {
     componentDidUpdate(prevProps) {
         const status = this.props.status
         const phims = this.props.phim
-        const arr = []
-        arr.push(typeof (phims.hinhAnh))
-        const file = new File(arr, phims.hinhAnh?.slice(42), { type: "image/png" })
 
         if (phims !== prevProps.phim) {
             if (status === "fix") {
                 let newTrailer = phims.trailer.replace('watch?v=', 'embed/')
-
                 const newPhim = { ...phims, maNhom: "GP01", trailer: newTrailer }
-
                 this.setState({
                     phim: newPhim,
                     basa64HinhAnh: phims.hinhAnh,
                 })
-
             } else {
                 let newPhims = {
                     maPhim: '',
@@ -208,12 +185,6 @@ class FormPhim extends Component {
                 })
             }
         }
-    }
-}
-
-const mapStateToProps = (state) => {
-    return {
-
     }
 }
 

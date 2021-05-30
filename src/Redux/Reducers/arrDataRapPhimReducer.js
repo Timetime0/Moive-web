@@ -1,4 +1,4 @@
-import { GET_DATA_CUM_THEATER, GET_INFOR_THEATER, RENDER_CHITIET_RAP} from "../Types/dataRapPhim"
+import { DELETE_DATA_LICHCHIEU_MAPHIM, GET_DATA_CUM_THEATER, GET_DATA_LICHCHIEU_HETHONG, GET_DATA_LICHCHIEU_MAPHIM, GET_INFOR_THEATER, RENDER_CHITIET_RAP} from "../Types/dataRapPhim"
 
 const initialState = {
     arrData : [],
@@ -7,6 +7,10 @@ const initialState = {
       logo:[], // auto BHDStar
       chiTiet:[],
     },
+    lichChieuMaPhim: {},
+    lichChieuHeThong: {},
+    dataByMaPhim:{},
+
 }
 
 export const arrDataRapPhimReducer = (state = initialState, action) => {
@@ -28,6 +32,20 @@ export const arrDataRapPhimReducer = (state = initialState, action) => {
             state.renderGiaoDien.logo = action.logo
             return {...state}
         }
+        case GET_DATA_LICHCHIEU_MAPHIM:{
+            state.dataByMaPhim = action.data
+            if( action.data){
+                const newObj = action.data.heThongRapChieu
+                const newHeThongRap =newObj?.filter(arr=>arr.maHeThongRap === action.maHeThongRap)
+                state.lichChieuMaPhim = {...state.lichChieuMaPhim, heThongRapChieu:newHeThongRap} 
+            }     
+            return {...state}
+        }
+        case DELETE_DATA_LICHCHIEU_MAPHIM:{
+            state.dataByMaPhim = ''
+            return {...state}
+        }
+
 
     default:{return state}
     }

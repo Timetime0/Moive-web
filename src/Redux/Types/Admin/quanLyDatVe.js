@@ -1,0 +1,9 @@
+export const GET_PHONGVE = 'GET_PHONGVE'
+export const CHOICE_GHE  = 'CHOICE_GHE'
+export const DELETE_GHE = 'DELETE_GHE'
+export const BOOKING_CHAIR  = 'BOOKING_CHAIR'
+
+
+export const GET_PHONGVE_SAGA = 'GET_PHONGVE_SAGA'
+export const BOOKING_CHAIR_SAGA  = 'BOOKING_CHAIR_SAGA'
+

@@ -55,7 +55,13 @@ export const DivFrameSeacch = styled.div`
 `
 
 export const DivDetailSearch = styled.div`
-
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: all 0.5s;
+    &:hover{
+        color: ${props=>props.theme.btnPrimaryColor};
+        font-weight: bolder;
+    }
 `
 
 export const DivModalAd = styled.div`

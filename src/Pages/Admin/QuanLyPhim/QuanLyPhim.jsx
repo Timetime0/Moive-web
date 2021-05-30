@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { DELETE_PHIM_SAGA, GET_DATA_PHIM_THEOTRANG_SAGA } from '../../../Redux/Types/Admin/quanLyPhimType'
+import { DELETE_PHIM_SAGA, FIND_PHIM, GET_DATA_PHIM_THEOTRANG_SAGA } from '../../../Redux/Types/Admin/quanLyPhimType'
 import { GET_DATA_PHIM_SAGA } from '../../../Redux/Types/DataPhimType'
 import { ButtonAd, ButtonThem, DivDetailSearch, DivFrameSeacch, DivModalAd, Li, Trang } from '../../../StyledComponent/Admin/QuanLyNguoiDung/quanLyNguoiDung'
-import { ButtonCloseAd, ButtonCloseAdPhim } from '../../../StyledComponent/Login/DangKyStyled'
+import {  ButtonCloseAdPhim } from '../../../StyledComponent/Login/DangKyStyled'
 import FormPhim from './FormPhim'
 
 class QuanLyPhim extends Component {
@@ -25,28 +25,26 @@ class QuanLyPhim extends Component {
         const { value } = e.target
         if (value === "" || value.length === 0) {
             this.setState({
-                show: false
+                show: false,
+                searchInput: value,
             })
         } else {
             this.setState({
-                show: true
-            })
+                show: true,
+                searchInput: value
+            },
+                () => { this.globalSearch() }
+            )
         }
-        const newStr = value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim().replace(/\s+/g, ' ').split(" ").join("-");
-
-        console.log(newStr)
-        this.setState({
-            searchInput: newStr
-        },
-            () => { this.globalSearch() }
-        )
     }
 
     globalSearch = () => {
         const { searchInput } = this.state;
+        const newStr = searchInput.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim().replace(/\s+/g, ' ').split(" ").join("-");
+
         let filteredData = this.props.danhSach.filter(value => {
             return (
-                value.biDanh.includes(searchInput)
+                value.biDanh.includes(newStr)
             )
         })
         this.setState({
@@ -79,6 +77,7 @@ class QuanLyPhim extends Component {
 
     renderPaging = () => {
         const number = this.props.danhSachPhimTheoTrang.totalPages
+        console.log(number)
         const arr = []
         for (let i = 0; i < number; i++) {
             arr.push(i)
@@ -129,22 +128,43 @@ class QuanLyPhim extends Component {
         this.props.dispatch({
             type:DELETE_PHIM_SAGA,
             maPhim:maPhim,
+            soTrang: this.state.selected,
+            soPhanTuTrang: 5,
         })
     }
 
     onClickUpdatePhim = ()=>{
         this.setState({
             status:'update',
-            phim:""
+            phim:"",
+            
         })
     }
 
     renderDataSearch = () => {
         return this.state.data?.map((item, index) => {
-            return <DivDetailSearch>{item.tenPhim}</DivDetailSearch>
+            return <DivDetailSearch onClick={this.onClickDetailFinding} className="">{item.tenPhim}</DivDetailSearch>
+        })
+    }
+    
+    onClickDetailFinding = (e)=> {
+        this.setState({
+            searchInput: e.target.innerHTML,
+            show:false,
         })
     }
 
+    handleOnSubmit = (e)=> {
+        e.preventDefault()
+        this.props.dispatch({
+            type: FIND_PHIM,
+            key: this.state.searchInput
+        })
+        this.forceUpdate()
+        this.setState({
+            show: false
+        })
+    }
 
     render() {
         return (
@@ -179,7 +199,7 @@ class QuanLyPhim extends Component {
                                     </div>
                                     <input
                                         onChange={this.onChangInput}
-                                        type="text" className='form-control' id="inlineFormInputGroup" placeholder='Họ Tên' name="findHoTen" autoComplete="off"
+                                        type="text" className='form-control' value={this.state.searchInput} id="inlineFormInputGroup" placeholder='Họ Tên' name="findHoTen" autoComplete="off"
                                     />
                                 </form>
                                 <DivFrameSeacch>
@@ -217,7 +237,7 @@ class QuanLyPhim extends Component {
                                 <ButtonAd type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">x</span>
                                 </ButtonAd>
-                                <FormPhim status={this.state.status} phim={this.state.phim} />
+                                <FormPhim status={this.state.status} phim={this.state.phim} selected={this.state.selected} trangCuoi={this.props.danhSachPhimTheoTrang.totalPages}/>
                                 <ButtonCloseAdPhim type="button" className="btn btn-danger" data-dismiss="modal">Close</ButtonCloseAdPhim>
                             </div>
                         </div>
@@ -233,6 +253,10 @@ class QuanLyPhim extends Component {
             soPhanTuTrang: 5,
         })
         this.props.dispatch({ type: GET_DATA_PHIM_SAGA })
+    }
+
+    componentDidUpdate(){
+        
     }
 }
 

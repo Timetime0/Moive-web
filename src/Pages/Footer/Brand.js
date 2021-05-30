@@ -152,8 +152,14 @@ class Brand extends Component {
                     </section>
                 </div></div></div>
             </div>
-
         )
+    }
+    
+    goToTheHeader = ()=>{
+        return window.$('html,body').scrollTop(0);
+    }
+    componentDidMount(){
+        this.goToTheHeader()
     }
 }
 

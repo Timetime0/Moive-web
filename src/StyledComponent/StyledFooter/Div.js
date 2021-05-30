@@ -13,7 +13,12 @@ height: 70px;
 width: 70px;
 padding: 5px;
 @media screen and (max-width:768px){
+    width: 90% !important;
     height: 60px !important;
+}
+@media screen and (max-width:576px){
+    height: 50px !important;
+    width: 90% !important;
 }
 `
 
@@ -27,6 +32,9 @@ export const ImgLeft = styled.img`
     }
     @media screen and (max-width:850px){
         width: 200px;
+    }
+    @media screen and (max-width:768px){
+        width: 180px;
     }
 `
 

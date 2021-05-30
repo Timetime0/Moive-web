@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { BtnHeader, ImgLogo, Nav, NavHashLinkT, NavLinkT } from '../../StyledComponent/Header/Header'
+import { BtnHeader, ButtonToggle, ImgLogo, Nav, NavHashLinkT, NavLinkT } from '../../StyledComponent/Header/Header'
 import { NavLink} from 'react-router-dom'
 import { withRouter } from "react-router";
+import { LOGOUT_USER } from '../../Redux/Types/auth-type';
 
 export class Header extends Component {
     constructor(props){
@@ -14,16 +15,17 @@ export class Header extends Component {
     }
 
 
-    // localStorage.removeItem(key)
     hanleLogOut = ()=>{
-        localStorage.removeItem('admin')
+        localStorage.removeItem('client')
         this.setState({
-            admin:""
+            client:""
+        })
+        this.props.dispatch({
+            type: LOGOUT_USER
         })
     }
 
     hanleLogIn = ()=>{
-        console.log(1)
         this.props.history.push('/login')
     }
 
@@ -31,7 +33,7 @@ export class Header extends Component {
         const value = this.state.client
         if(value){
             return (<div className="btn-user ml-auto pr-1">
-                        <span className="px-3">Admin: {this.props.admin.taiKhoan}</span>
+                        <BtnHeader onClick={()=>{this.props.history.push('/profile')}} className="px-3 btn btn-outline-success mr-2"> Hi: {this.state.client.taiKhoan}</BtnHeader>
                         <BtnHeader onClick={this.hanleLogOut} className="btn btn-outline-success my-2 my-sm-0" type="submit">Đăng xuất</BtnHeader>
             </div>)
         }else{
@@ -58,12 +60,11 @@ export class Header extends Component {
                
                 <div className="collapse navbar-collapse" id="collapsibleNavId">
                     <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-
                         <li className="nav-item ">
                             <NavHashLinkT activeStyle={{color:`${props=>props.theme.btnPrimaryColor}`}} className="nav-link" to="/home/#lichChieuPhim">Lịch chiếu</NavHashLinkT>
                         </li>
                         <li className="nav-item">
-                            <NavLinkT  activeStyle={{color:`${props=>props.theme.btnPrimaryColor}`}} className="nav-link" to="/rapchieuphim">Rạp chiếu phim</NavLinkT>
+                            <NavLinkT  activeStyle={{color:`${props=>props.theme.btnPrimaryColor}`}} className="nav-link" to="/rapchieuphim">Rạp phim</NavLinkT>
                         </li>
                         <li className="nav-item ">
                             <NavHashLinkT activeStyle={{color:`${props=>props.theme.btnPrimaryColor}`}} className="nav-link" to="/home/#tinTuc">Tin Tức</NavHashLinkT>
@@ -81,9 +82,9 @@ export class Header extends Component {
                     </div>
                 </div>
                 {this.renderAccount()}
-                <button className="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+                <ButtonToggle className="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon" />
-                </button>
+                </ButtonToggle>
             </Nav>
         )
     }
@@ -92,8 +93,14 @@ export class Header extends Component {
     componentDidUpdate(prevProps, prevState){
         if (prevState.admin !== this.props.admin) {
             this.setState({
-                admin:this.props.admin
+                admin:this.props.admin,
+                client: this.props.client
             })    
+        }
+        if(prevState.client !== this.props.client){
+            this.setState({
+                client: this.props.client
+            })  
         }
     }
 
@@ -103,7 +110,8 @@ export class Header extends Component {
 
 const mapStateToProps = (state)=>{
     return {
-        admin: state.userReducer.user.admin
+        admin: state.userReducer.user.admin,
+        client: state.userReducer.user.client
     }
 }
 

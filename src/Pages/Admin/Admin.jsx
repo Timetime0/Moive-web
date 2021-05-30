@@ -22,7 +22,6 @@ class Admin extends Component {
 
   render() {
     const userAdin = localStorage.getItem('admin')
-    // const admin =  JSON.parse(userAdin)
     if(userAdin){
       return (
         <div>

@@ -149,6 +149,13 @@ class ChinhSachBaoMat extends Component {
         </div>
         )
     }
+    goToTheHeader = ()=>{
+        return window.$('html,body').scrollTop(0);
+    }
+
+    componentDidMount(){
+        this.goToTheHeader()
+    }
 }
 
 export default ChinhSachBaoMat

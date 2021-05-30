@@ -43,5 +43,19 @@ export const LinkClick =styled.a`
         color: ${props=>props.theme.btnPrimaryColor};
         font-size:50px;
     }
+    @media screen and (max-width:1350px){
+        width:5%;
+    }
 
+    @media screen and (max-width:992px){
+        width:5%;
+    }
+    @media screen and (max-width:768px){
+        width:15%;
+    }
+
+`
+
+export const LiCarosel = styled.li`
+    background-color:${props=>props.theme.btnPrimaryColor} !important;
 `

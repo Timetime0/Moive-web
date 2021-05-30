@@ -21,7 +21,9 @@ class RapChieuPhim extends Component {
                     <div>
                         <DivFrameLogoRap>
                             <ImgLogoRap name={rap.maHeThongRap} src={rap.logo} onMouseEnter={(event)=>{
-                                 this.props.dispatch({ type: GET_DATA_CUM_THEATER_SAGA, maHeThong: rap.maHeThongRap, renderGiaoDien: this.props.renderGiaoDien.logo.maHeThongRap })
+                                 this.props.dispatch({  type: GET_DATA_CUM_THEATER_SAGA, 
+                                                        maHeThong: rap.maHeThongRap, 
+                                                        renderGiaoDien: this.props.renderGiaoDien.logo.maHeThongRap })
                                 logo = event.target.src
                             }
                             }/>
@@ -100,7 +102,7 @@ class RapChieuPhim extends Component {
                                     <h2>{chiTiet.tenCumRap}</h2>
                                     <h6>{chiTiet.diaChi}</h6>
                                     <p>Tổng số rạp:{this.renderNumber(chiTiet.danhSachRap)}</p>
-                                    <div className="row"> {this.renderScreen(chiTiet.danhSachRap)}</div>
+                                    <div className="row justify-content-center"> {this.renderScreen(chiTiet.danhSachRap)}</div>
                                 </div>
                             </div>
                         </>:""}

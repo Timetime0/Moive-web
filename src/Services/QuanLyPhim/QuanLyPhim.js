@@ -6,7 +6,7 @@ import {BASE_URL} from '../../Utils/Constants/settingSystem'
     Lý do: Lấy danh sách phim từ API    
  */
 
-
+// lấy danh sách phim
 export function DataDanhSachPhim (){
     return Axios({
         method:'GET',
@@ -14,6 +14,7 @@ export function DataDanhSachPhim (){
     })
 }
 
+// lấy danh sách phim theo trang
 export function DataDanhSachPhimTheoTrang (soTrang,soPhanTuTrang){
     return Axios({
         method:'GET',
@@ -46,7 +47,6 @@ export function XoaPhimBangMaPhim (maPhim){ // lich chieu, thong tin phim
 
 // thêm hình ảnh phim
 export function AddImgPhim (hinhAnh){
-    const admin = JSON.parse(localStorage.getItem('admin'))
     return Axios({
         method:'POST',
         url:`${BASE_URL}/api/QuanLyPhim/ThemPhimUploadHinh`,

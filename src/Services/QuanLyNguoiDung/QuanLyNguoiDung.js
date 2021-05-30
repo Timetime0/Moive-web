@@ -83,3 +83,21 @@ export function loginNguoiDung(user){
     })
 }
 
+// Đăng ký
+export function dangKyNguoiDung(user){
+    return Axios({
+        method:"POST",
+        url:`${BASE_URL}/api/QuanLyNguoiDung/DangKy`,
+        data:user,
+    })
+}
+
+// Thông tin người dùng
+export function thongTinClient(taiKhoan){
+    return Axios({
+        method:'POST',
+        url:`${BASE_URL}/api/QuanLyNguoiDung/ThongTinTaiKhoan`,
+        data:taiKhoan,
+    })
+}
+

@@ -19,7 +19,6 @@ export const Img = styled.img`
 }
     @media screen and (max-width:576px){
         width: 90%;
-
     }
 }
 

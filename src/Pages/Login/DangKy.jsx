@@ -1,37 +1,48 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { SIGN_UP_SAGA } from '../../Redux/Types/auth-type'
 import { BookingContent, BookingImg,BookingForm,Form, FormInput, Img } from '../../StyledComponent/Login/DangKyStyled'
-
-export default class DangKy extends Component {
+import { withRouter } from "react-router";
+ class DangKy extends Component {
     constructor(props){
         super(props)
         this.state={
-            taiKhoan:'',
-            matKhau:'',
-            email:'',
-            sdt:'',
-            maNhom:'gp01',
-            maLoai:'KhachHang',
-            hoTen:'',
+           user:{
+                taiKhoan:'',
+                matKhau:'',
+                email:'',
+                sdt:'',
+                maNhom:'gp01',
+                maLoai:'KhachHang',
+                hoTen:'',
+           }
         }
     }
 
     onChangeValue = (e) =>{
         const {name,value} = e.target
         this.setState({
-            [name]:value
+            user:{
+                ...this.state.user,
+                [name]:value
+            }   
         })
     }
 
     handleSubmit = (e)=>{
         e.preventDefault()
-        console.log(this.state)
+        this.props.dispatch({
+            type:SIGN_UP_SAGA,
+            user: this.state.user,
+            history:this.props.history,
+        })
     }
 
     render() {
         return (
             <BookingContent className="booking-content">
                 <BookingImg className="booking-image">
-                    <Img className="booking-img" src="https://source.unsplash.com/collection/190727/500x500" alt="Booking Image" />
+                    <Img className="booking-img" src="https://source.unsplash.com/collection/190727/300x500" alt="Booking Image" />
                 </BookingImg>
                 <BookingForm className="booking-form">
                     <Form id="booking-form" onSubmit={(event)=>this.handleSubmit(event)}>
@@ -81,3 +92,6 @@ export default class DangKy extends Component {
         )
     }
 }
+
+
+export default connect(null) (withRouter(DangKy))

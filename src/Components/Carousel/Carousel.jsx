@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 // import Modal from 'react-bootstrap/Modal'
 import { DivBgBehind, DivImgFrame, DivPosition, SpanLeft, SpanRight, I, DivPositionHeader, DivRowHeader, DivRowFooter, DivDetail, DivLeftAim, DivRightAim, DivFrame, DivCarouselCaption, Content, DivModal, Iframe, ButtonIframe, DivRight } from '../../StyledComponent/Carousel/DivPosition.js'
 import { Img, ImgBehind } from '../../StyledComponent/Carousel/Img.js'
-import { ButtonImg, LinkPlay, LinkClick } from '../../StyledComponent/Carousel/Link.js'
+import { ButtonImg, LinkPlay, LinkClick, LiCarosel } from '../../StyledComponent/Carousel/Link.js'
 import { P } from '../../StyledComponent/Container/Header.js'
 
 
@@ -98,9 +98,9 @@ class Carousel extends Component {
             <div>
                 <div id="carouselExampleCaptions" className="carousel slide" data-ride="carousel">
                     <ol className="carousel-indicators">
-                        <li data-target="#carouselExampleCaptions" data-slide-to={0} className="active" />
-                        <li data-target="#carouselExampleCaptions" data-slide-to={1} />
-                        <li data-target="#carouselExampleCaptions" data-slide-to={2} />
+                        <LiCarosel data-target="#carouselExampleCaptions" data-slide-to={0} className="active" />
+                        <LiCarosel data-target="#carouselExampleCaptions" data-slide-to={1} />
+                        <LiCarosel data-target="#carouselExampleCaptions" data-slide-to={2} />
                     </ol>
                     <div className="carousel-inner">
                         <div className="carousel-item active">

@@ -132,7 +132,6 @@ class DanhSachPhim extends Component {
         return string ? string.slice(0, 10) : ''
     }
 
-
     render() {
         const settings = {
             infinite: true,
@@ -188,9 +187,6 @@ class DanhSachPhim extends Component {
 
             </div>
         )
-
-
-
     }
 
     componentDidMount() {

@@ -34,7 +34,7 @@ class DienAnh extends Component {
                 return (
                     <div key={index}>
                         <div className="row my-5">
-                            {item[0] ? <div className="1-new col-lg-6 col-4">
+                            {item[0] ? <div className="1-new col-lg-6 col-4 ">
                                 <ImgDienAnh src={item[0].hinhAnh} alt="" />
                                 <LinkDienAnh href="/true"> <h6>{item[0].noiDungChinh}</h6></LinkDienAnh>
                                 <PDienAnh>{item[0].noiDungPhu}</PDienAnh>
@@ -42,14 +42,14 @@ class DienAnh extends Component {
                             <div className="col-lg-6 col-8">
                                 <div className="row">
                                     {item[1] ?
-                                        <div className="2-new col-lg-6 col-6">
+                                        <div className="2-new col-lg-6 col-6 ">
                                             <ImgDienAnh src={item[1].hinhAnh} alt="" />
                                             <LinkDienAnh href="">  <h6>{item[1].noiDungChinh}</h6></LinkDienAnh>
                                             <PDienAnh>{item[1].noiDungPhu}</PDienAnh>
                                         </div> : ""
                                     }
                                     {
-                                        item[2] ? <div className="3-new col-lg-6 col-6">
+                                        item[2] ? <div className="3-new col-lg-6 col-6 ">
                                             <ImgDienAnh src={item[2].hinhAnh} alt="" />
                                             <LinkDienAnh href="/true"> <h6>{item[2].noiDungChinh}</h6></LinkDienAnh>
                                             <PDienAnh>{item[2].noiDungPhu}</PDienAnh>
@@ -148,13 +148,13 @@ class DienAnh extends Component {
             return arrFirst.map((item, index) => {
                 return (
                     <div className="row"  key={index}>
-                        {item[0] ? <div className="1-new col-12">
-                                <ImgDienAnh src={item[0].hinhAnh} alt="/true" />
-                                <LinkDienAnh href="/true"> <h6>{item[0].noiDungChinh}</h6></LinkDienAnh>
+                        {item[0] ? <div className="1-new col-12 " >
+                                <ImgDienAnh src={item[0].hinhAnh} alt="/true" className="m-auto" style={{width:'80%'}}/>
+                                <LinkDienAnh className="m-auto" href="/true" style={{width:'80%'}}> <h6>{item[0].noiDungChinh}</h6></LinkDienAnh>
                             </div> : ""}
-                            {item[1] ? <div className="1-new col-12">
-                                <ImgDienAnh src={item[1].hinhAnh} alt="/true" />
-                                <LinkDienAnh href="/true"> <h6>{item[1].noiDungChinh}</h6></LinkDienAnh>
+                            {item[1] ? <div className="1-new col-12 " >
+                                <ImgDienAnh src={item[1].hinhAnh} alt="/true" className="m-auto" style={{width:'80%'}}/>
+                                <LinkDienAnh className="m-auto" href="/true" style={{width:'80%'}}> <h6>{item[1].noiDungChinh}</h6></LinkDienAnh>
                             </div> : ""}
                     </div>
                 )

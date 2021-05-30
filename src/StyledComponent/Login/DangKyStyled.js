@@ -7,8 +7,9 @@ export const BookingContent = styled.div`
 `
 
 export const BookingImg = styled.div`
-    width: 58.33%;
+    width: 60%;
     margin-bottom: -8px;
+    text-align:center
 `
 
 
@@ -27,7 +28,7 @@ export const BookingImgPhimAdmin = styled.div`
 
 
 export const BookingForm = styled.div`
-    width: 41.67%;
+    width: 40%;
     height:500px;
     background: #111;
     border-top-right-radius: 10px;
@@ -65,8 +66,18 @@ export const FormRadio = styled.div`
 `
 
 export const Form = styled.form`
-    padding: 50px 30px 20px 30px;
+    padding: 50px 30px 20px 20px;
+    @media screen and (max-width:576px){
+        padding: 50px 5px 20px 10px;
+    }
 `
+export const FormLogin = styled.form`
+    padding: 50px 20px 20px 20px;
+    @media screen and (max-width:576px){
+        padding: 50px 5px 20px 10px;
+    }
+`
+
 export const FormPhimAd = styled.form`
     padding: 20px 30px 20px 30px;
 `

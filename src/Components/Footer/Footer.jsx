@@ -11,11 +11,11 @@ import '../../Assets/OwlCarousel/owl.theme.default.css'
 
 export class Footer extends Component {
 
-
     render() {
         const settings = {
             dots: false,
             items: 11,
+
             autoplay: true,
             loop: true,
             autoplayTimeout: 2000,
@@ -38,12 +38,12 @@ export class Footer extends Component {
             }
         }
         return (
-            <ContainerFluid className=" movie__footer">
+            <ContainerFluid className="movie__footer">
                 <Container className="container-md container-fluid"> 
                     <div className="container-fluid">
                     <div className="row p-md-5 py-5 text-center" styled={{marginLeft:0,marginRight:0}}>
                         <div className="col-6">
-                            <h6>TIMETIME</h6>
+                            <h6>TITA</h6>
                             <div className="row">
                                 <div className="col-sm-6">
                                     <NavLinks to="/noidung/faq" ><p href="#timetime">FAQ</p></NavLinks>
@@ -70,7 +70,7 @@ export class Footer extends Component {
                             </div>
                         </div>
                         <div className="col-sm-12">
-                            <OwlCarousel className="row owl-theme" {...settings}>
+                            <OwlCarousel className="row owl-theme m-0" {...settings}>
                                 <div className="item">
                                     <a href="/" className=""><ImgLarge src="/Assets/img/icons/bhd.png" /></a>
                                 </div>
@@ -134,7 +134,7 @@ export class Footer extends Component {
                     </div>
                    <div className="container-fluid">
                    <div className="row">
-                        <div className="col-4 col-md-3 text-center">
+                        <div className="col-4 col-md-3 text-center p-0">
                             <ImgLeft className="px-2" src="/Assets/img/logo/logo-removebg.png" alt="zion" />
 
                         </div>

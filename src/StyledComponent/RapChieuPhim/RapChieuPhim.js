@@ -6,6 +6,7 @@ export const ImgLogoRap = styled.img`
     border-radius:50%;
     border: 1px solid transparent;
     &:hover{
+        // background-color:red;
         box-shadow: 3px 5px 5px ${props=>props.theme.btnPrimaryColor};
         .divHoverLogo{
             transform:translateY(0px);
@@ -26,27 +27,23 @@ export const DivHoverLogo = styled.div`
     background-color:${props=>props.theme.btnPrimaryColor};
     border-radius:15px;
     position: absolute;
-    top:30%;
+    top:230px;
     visibility: hidden;
     left:5%;
     right:5%;
     transition:all 0.5s;
     opacity:0;
-    @media screen and (max-width:1300px){
-        top:33%;
-    }
-    @media screen and (max-width:884px){
-        top:39%;
+    @media screen and (max-width:992px){
+        top:205px;
     }
     @media screen and (max-width:768px){
         width:95%;
         position: relative;
         visibility: visible;
         opacity:1;
+        top:0px;
     }
 `
-
-
 
 export const Logo = styled.div`
    &:hover{
@@ -85,5 +82,4 @@ export const DivFrameLogoRap = styled.div`
     text-align:center;
     width:100%;
     height:100%;
-
 `

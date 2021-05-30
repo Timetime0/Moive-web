@@ -10,7 +10,7 @@ import { rootSaga } from './Saga/rootSaga';
 import {arrDataChiTetPhimReducer} from './Reducers/arrDataChiTetPhimReducer'
 import arrDataNguoiDungReducer from './Reducers/Admin/arrDataNguoiDungReducer'
 import userReducer from './Reducers/Login/userReducer'
-
+import arrDataPhongVeReducer from './Reducers/Admin/arrDataPhongVeReducer'
 const middleWareSaga = createMiddleWareSaga();
 
 
@@ -23,6 +23,8 @@ const rootReducer = combineReducers({
     arrDataChiTetPhimReducer,
     arrDataNguoiDungReducer,
     userReducer,
+    arrDataPhongVeReducer,
+    
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

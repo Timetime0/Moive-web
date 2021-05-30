@@ -1,6 +1,6 @@
 import { call, put,  takeEvery,takeLatest  } from "@redux-saga/core/effects";
-import { DataDanhSachRap, DataThongTinCumRapTheoHeThong } from "../../Services/QuanLyRap/QuanLyRap";
-import { GET_DATA_CUM_THEATER, GET_DATA_CUM_THEATER_SAGA, GET_INFOR_THEATER, GET_INFOR_THEATER_SAGA} from "../Types/dataRapPhim";
+import { DataDanhSachRap, DataThongTinCumRapTheoHeThong, DataThongTinLichChieuTheoHeThongRap, DataThongTinLichChieuTheoPhim } from "../../Services/QuanLyRap/QuanLyRap";
+import { GET_DATA_CUM_THEATER, GET_DATA_CUM_THEATER_SAGA, GET_DATA_LICHCHIEU_HETHONG, GET_DATA_LICHCHIEU_HETHONG_SAGA, GET_DATA_LICHCHIEU_MAPHIM, GET_DATA_LICHCHIEU_MAPHIM_SAGA, GET_INFOR_THEATER, GET_INFOR_THEATER_SAGA} from "../Types/dataRapPhim";
 
 // Lay danh sach rap phim
 function * getDataRapPhim (action){
@@ -49,8 +49,64 @@ export function * theoDoiActionGetDataCumRapPhimApi(){
     yield takeLatest  (GET_DATA_CUM_THEATER_SAGA, getCumRapPhim)
 }
 
-//
+// Lấy thông tin lịch chiếu theo hệ thống rạp
+function* getDataThongTinLichChieuTheoHeThong(action){
+    try{
+        const res = yield call(()=>{
+            return DataThongTinLichChieuTheoHeThongRap(action.maHeThongRap)
+        })
+ 
+        yield put({
+            type:GET_DATA_LICHCHIEU_HETHONG,
+            data: res.data
+        })
+    }catch(err){
+        console.log(err.response.data)
+    }
+ }
+ 
+ export function* theoDoiActionGetDataThongTinLichChieuTheoHeThong(){
+     yield takeLatest (GET_DATA_LICHCHIEU_HETHONG_SAGA,getDataThongTinLichChieuTheoHeThong )
+ }
+ 
+
+// lấy thông tin lịch chiếu theo mã phim
+function* getDataThongTinLichChieuTheoMaPhim(action){
+   try{
+       const res = yield call(()=>{
+           return DataThongTinLichChieuTheoPhim(action.maPhim)
+       })
+
+       yield put({
+           type:GET_DATA_LICHCHIEU_MAPHIM,
+           data: res.data,
+           maHeThongRap: action.maHeThongRap
+       })
+   }catch(err){
+       console.log(err.response.data)
+   }
+}
+
+export function* theoDoiActionGetDataThongTinLichChieuTheoMaPhim(){
+    yield takeLatest (GET_DATA_LICHCHIEU_MAPHIM_SAGA,getDataThongTinLichChieuTheoMaPhim)
+}
 
 
+// lấy thông tin lịch chiếu theo hệ thống rạp
+function* getDataLichChieuTheoHeThongRap(action){
+    try{
+        const res = yield call(()=>{
+            return DataThongTinLichChieuTheoHeThongRap(action.maHeThongRap)
+        })
+        yield put({
+            type:GET_DATA_LICHCHIEU_HETHONG,
+            data: res.data,
+        }) 
+    }catch(err){
+        console.log(err.response.data)
+    }
+}
 
-
+export function* theoDoiActionGetDataThongTinLichChieuTheoHeThongRap(){
+    yield takeLatest (GET_DATA_LICHCHIEU_HETHONG_SAGA,getDataLichChieuTheoHeThongRap)
+}

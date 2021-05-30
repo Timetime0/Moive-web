@@ -41,12 +41,16 @@ class FormAd extends Component {
         if (status === "fix") {
             this.props.dispatch({
                 type: UPDATE_NGUOIDUNG_SAGA,
-                nguoiDung:this.state.user
+                nguoiDung:this.state.user,
+                soTrang: this.props.selected,
+                soPhanTuTrang: 20,
             })
         } else {
             this.props.dispatch({
                 type: ADD_NGUOIDUNG_SAGA,
-                nguoiDung:this.state.user
+                nguoiDung:this.state.user,
+                soTrang: this.props.selected,
+                soPhanTuTrang: 20,
             })
         }
     }
@@ -134,12 +138,6 @@ class FormAd extends Component {
                 })
             }
         }
-    }
-}
-
-const mapStateToProps = (state)=>{
-    return{
-        danhSach: state.arrDataNguoiDungReducer.danhSach,
     }
 }
 

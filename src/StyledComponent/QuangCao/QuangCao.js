@@ -4,6 +4,7 @@ export const DivBgQuangCao = styled.div`
     background-image: url('/Assets/img/login/bg2.jpg');
     background-size:cover;
     background-position:center;
+    background-attachment: fixed;
     background-repeat: no-repeat;
     height: 100%;
     width:100%;
@@ -35,7 +36,6 @@ export const ImgQuangCao1 = styled.img`
 
 export const DivContainerQuangCao = styled.div`
    padding: 100px 50px;
-   
    height:100%;
    @media screen and (max-width:786px){
     padding: 20px 0px;
