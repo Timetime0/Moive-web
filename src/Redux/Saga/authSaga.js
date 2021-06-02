@@ -3,6 +3,7 @@ import { loginNguoiDung } from "../../Services/QuanLyNguoiDung/QuanLyNguoiDung";
 import { LOGIN_ADMIN, LOGIN_ADMIN_SAGA, SIGN_UP, SIGN_UP_SAGA, LOGIN_USER_SAGA, LOGIN_USER } from "../Types/auth-type";
 import Swal from 'sweetalert2'
 
+
 function* authDangNhap(action) {
     try {
         let result = yield call(() => {
@@ -48,6 +49,7 @@ function* authDangKy(action) {
             return loginNguoiDung(action.user)
         })
 
+        console.log(result)
         if (result.status === 200){
             Swal.fire({
                 icon: 'success',
@@ -61,14 +63,14 @@ function* authDangKy(action) {
         } else {
             Swal.fire({
                 icon: 'error',
-                title: 'Tài khoản hoặc mật khẩu không chính xác!',
+                title: `${result.response.data}`,
             })
         }
     } catch (err) {
         console.log(err)
         Swal.fire({
             icon: 'error',
-            title: 'Tài khoản hoặc mật khẩu không chính xác!',
+            title: `${err.response.data}`,
         })
     }
 }

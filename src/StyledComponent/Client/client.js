@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const DivFrameIn4 =styled.div`
     display:flex;
     flex-wrap:wrap;
+    padding-top:100px;
 `
 
 export const DivFramePer =styled.div`

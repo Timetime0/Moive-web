@@ -9,34 +9,30 @@ import {clientRouter} from './config/router.config'
 import { connect } from 'react-redux';
 import { Component } from 'react';
 import { LOGIN_ADMIN, LOGIN_USER } from './Redux/Types/auth-type';
+import BackToTop from './Components/BackToTop/BackToTop';
+import ScrollToTop from './Components/BackToTop/ScrollToTop';
 
 
 class App extends Component {
+  
+  
   RenderRouterList = () => {
     return clientRouter.map((item,index)=>{
       return  <Route key={index} exact={item.exact} path={item.path} component={item.component}/>
     })    
   }
-
-  constructor(props){
-    super(props)
-    this.state= {
-      user : 1,
-    }
-  }
   
-
-
   render(){
     return (
       <ThemeProvider theme={darkTheme}>
         <BrowserRouter>
+          <ScrollToTop/>
           <Header />
           <Waiting/>
           <Switch>
             {this.RenderRouterList()}
-            {/* <Route axact path='/admin' render={() => (<Redirect to="/admin/login" />)}/> */}
           </Switch>
+          <BackToTop/>
           <Footer />
         </BrowserRouter>
       </ThemeProvider>
@@ -62,9 +58,9 @@ class App extends Component {
 
   } 
 
-    componentDidMount(){
-        this.getUserFromLocal()
-    }
+  componentDidMount(){
+    this.getUserFromLocal()
+  }
 }
 
 const mapStateToProps = (state)=>{

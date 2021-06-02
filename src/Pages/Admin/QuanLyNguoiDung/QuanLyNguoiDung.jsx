@@ -163,7 +163,7 @@ class QuanLyNguoiDung extends Component {
                                     <div className="input-group-prepend">
                                         <button onClick={this.renderDataFinding} id="find-user" type="submit" className="input-group-text"><i className="fa fa-search"></i></button>
                                     </div>
-                                    <input onChange={this.onChangInput} type="text" className="form-control find-user"  placeholder="Họ Tên hoặc Tài Khoản" name="findHoTen"/>
+                                    <input onChange={this.onChangInput} type="text" className="form-control find-user"  placeholder="Họ Tên hoặc Tài Khoản" name="findHoTen" autoComplete="off"/>
                                 </form>
                             </div>
                         </div>

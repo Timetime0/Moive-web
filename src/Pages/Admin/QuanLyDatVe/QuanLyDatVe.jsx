@@ -4,7 +4,7 @@ export default class QuanLyDatVe extends Component {
     render() {
         return (
             <div>
-                ấdád
+                
             </div>
         )
     }

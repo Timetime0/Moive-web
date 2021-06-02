@@ -19,6 +19,9 @@ export function * rootSaga(){
         dataRapPhimSaga.theoDoiActionGetDataCumRapPhimApi(),
         dataRapPhimSaga.theoDoiActionGetDataThongTinLichChieuTheoHeThong(),
         dataRapPhimSaga.theoDoiActionGetDataThongTinLichChieuTheoMaPhim(),
+        dataRapPhimSaga.theoDoiActionGetDataThongTinLichChieuTheoMaPhimFind(),
+
+
 
         quanLyNguoiDungSaga.theoDoiActionGetDataNguoiDungApi(),
         quanLyNguoiDungSaga.theoDoiActionGetDataNguoiDungTheoTrangApi(),
@@ -35,7 +38,6 @@ export function * rootSaga(){
 
         quanLyDatVeSaga.theoDoiActionGetDataPhongVe(),
         quanLyDatVeSaga.theoDoiActionBookingTicketForClient(),
-
 
     ])
 }

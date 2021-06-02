@@ -6,7 +6,6 @@ import { DISPLAY_WAITING, HIDDEN_WAITING } from '../Types/waitingType'
 import Swal from 'sweetalert2'
 
 function* getDataPhimAPI(action) {
-
     yield put({
         type: DISPLAY_WAITING
     })
@@ -61,7 +60,7 @@ export function* theoDoiActionGetDataChiTietPhimApi() {
     yield takeEvery(GET_DATA_CHITIETPHIM_SAGA, getDataChiTietPhimAPI)
 }
 
-
+// lấy data theo trang
 function* getDataPhimTheoTrang(action){
     yield put({
         type: DISPLAY_WAITING
@@ -200,6 +199,8 @@ export function* theoDoiActionUpdateImgDataPhimApi() {
     yield takeLatest(UPDATE_IMG_PHIM_SAGA, updataImgDataPhim)
 }
 
+
+// updata phim
 function* updataDataPhim(action){
     try{
 

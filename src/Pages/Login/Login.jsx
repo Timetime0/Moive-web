@@ -22,7 +22,7 @@ class Login extends Component {
                     <BgImage />
                     <DivFrameLogin>
                         <h2 style={{ paddingBottom: 80 }}>TimeTime Cinemax <br></br> đang chờ bạn <br></br> ^O^ </h2>
-                        <p>Đăng nhập để được nhiều ưu đãi,<br></br> mua vé và bảo mật thông tin!</p>
+                        <p style={{paddingBottom:'20px'}}>Tài khoản: banhbo <br></br> Mật khẩu: banhbo</p>
 
                         <LinkImgLogin>
                             <DivImgLogin data-toggle="modal" data-target="#login" inputBgColor="#3f64b7" inputBgColorHover="#fff">
@@ -60,7 +60,7 @@ class Login extends Component {
                         </PopupCu>
 
                         <div>
-                            <div show={this.state.showModal} className="modal fade" id="login" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true" role="dialog" >
+                            <div show="true" className="modal fade" id="login" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true" role="dialog" >
                                 <DivModalLogin className="modal-dialog">
                                     <DivModalContent className="modal-content">
                                         <div className="modal-body" >

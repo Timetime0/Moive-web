@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
 import { LOGOUT_ADMIN } from '../../Redux/Types/auth-type'
+import { DISPLAY_WAITING, HIDDEN_WAITING } from '../../Redux/Types/waitingType'
 import { Ul } from '../../StyledComponent/Admin/admin'
 import QuanLyDatVe from './QuanLyDatVe/QuanLyDatVe'
 import QuanLyNguoiDung from './QuanLyNguoiDung/QuanLyNguoiDung'
@@ -19,31 +20,40 @@ class Admin extends Component {
   }
 
 
+  setTimeOut = ()=>{
+    setTimeout(()=>{
+        this.props.dispatch({
+            type:HIDDEN_WAITING
+        })
+    },2000)
+}
 
   render() {
+    this.setTimeOut()
     const userAdin = localStorage.getItem('admin')
-    if(userAdin){
+    if (userAdin) {
       return (
-        <div>
+        <div className="pt-5">
           <div className="conteiner pt-5">
-            <div className="row justify-content-end" style={{ marginRight:'0px'}}>
+            <div className="row justify-content-end" style={{ marginRight: '0px' }}>
               <div className="col-4">
                 <span className="px-3">Admin: {this.props.admin.taiKhoan}</span>
                 <button onClick={this.hanleLogOut} className="btn btn-outline-success my-2 my-sm-0" type="submit">Đăng xuất</button>
               </div>
             </div>
           </div>
-  
+
           <div className="py-5">
             <Ul className="nav nav-pills mb-3 d-flex justify-content-center" id="pills-tab" role="tablist">
               <li className="nav-item" role="presentation">
                 <a className="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Quản lý người dùng</a>
               </li>
-              <li className="nav-item" role="presentation">
-                <a className="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Quản lý đặt vé</a>
-              </li>
+
               <li className="nav-item" role="presentation">
                 <a className="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Quản lý phim</a>
+              </li>
+              <li className="nav-item" role="presentation">
+                <a className="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Quản lý đặt vé</a>
               </li>
               <li className="nav-item" role="presentation">
                 <a className="nav-link" id="pills-rap-tab" data-toggle="pill" href="#pills-rap" role="tab" aria-controls="pills-contact" aria-selected="false">Quản lý rạp</a>
@@ -53,24 +63,32 @@ class Admin extends Component {
               <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                 <QuanLyNguoiDung />
               </div>
-              <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                <QuanLyDatVe />
-              </div>
               <div className="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                 <QuanLyPhim />
               </div>
-              <div className="tab-pane fade" id="pills-rap" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+              <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <QuanLyDatVe />
+              </div>
+              <div className="tab-pane fade" id="pills-rap" role="tabpanel" aria-labelledby="pills-contact-tab">
+
+              </div>
             </div>
           </div>
         </div>
       )
-    }else{
-      return(
-        <Redirect to='/admin/login'/>
+    } else {
+      return (
+        <Redirect to='/admin/login' />
       )
     }
-   
   }
+
+  componentDidMount() {
+    this.props.dispatch({
+      type: DISPLAY_WAITING
+    })
+  }
+
 }
 
 const mapStateToProps = (state) => {

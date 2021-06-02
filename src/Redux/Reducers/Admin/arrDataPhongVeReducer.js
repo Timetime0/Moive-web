@@ -3,10 +3,9 @@ import { CHOICE_GHE, DELETE_GHE, GET_PHONGVE } from "../../Types/Admin/quanLyDat
 const initialState = {
     thongTinPhim: '',
     danhSachGhe: '',
-
 }
 
-export default (state = initialState, action) => {
+const arrDataPhongVeReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_PHONGVE: {
             state.danhSachGhe = action.data.danhSachGhe
@@ -40,3 +39,4 @@ export default (state = initialState, action) => {
         default: { return state }
     }
 }
+export default arrDataPhongVeReducer

@@ -14,8 +14,6 @@ class ChiTietPhim extends Component {
         }
     }
 
-
-
     render() {
         const phim = this.props.chiTietPhim
         return (

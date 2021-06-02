@@ -12,6 +12,11 @@ export const DivSeacchPhim = styled.div`
     height:auto;
     max-height: 150px;
     overflow-y: scroll;
+    @media screen and (max-width:1200px){
+        width: 160px;
+        max-height: 120px;
+        
+    }
 `
 
 export const DivDetailSearch = styled.div`
@@ -22,7 +27,6 @@ export const DivDetailSearch = styled.div`
         color: ${props=>props.theme.btnPrimaryColor};
         font-weight: bolder;
     }
-
 `
 export const DivFramSearch = styled.div`
     position: relative;
@@ -44,5 +48,42 @@ export const DivFramSearch = styled.div`
         & .input-group-text{
             display:block;
         }
+    }
+    & .form-control{
+        padding: 0.5rem 0.375rem;
+    }
+`
+export const Input = styled.input`
+    padding: 25px !important;
+`
+
+export const ButtonClose = styled.button`
+
+`
+
+export const ButtonSubmit = styled.button`
+    width: 100%;
+    height: 88%;
+    background-color:${props=>props.theme.btnPrimaryColor};
+    border-color:${props=>props.theme.btnPrimaryColor};
+    &:hover{
+        background-color:${props=>props.theme.btnPrimaryColor};
+        border-color: ${props=>props.theme.btnPrimaryColor};
+        box-shadow: 0 0 0 0.2rem rgb(255 87 34 / 46%);
+    }
+    &:active{
+        background-color:#f5621c !important;
+        border-color: #f5621c !important;
+    }
+    &:focus{
+        background-color:#f5621c;
+        border-color: #f5621c;
+        box-shadow: 0 0 0 0.2rem rgb(255 87 34 / 46%);
+    }
+`
+
+export const DivDisplay= styled.div`
+    @media screen and (max-width:992px){
+        display:none;
     }
 `

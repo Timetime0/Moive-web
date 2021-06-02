@@ -59,3 +59,7 @@ export const LinkClick =styled.a`
 export const LiCarosel = styled.li`
     background-color:${props=>props.theme.btnPrimaryColor} !important;
 `
+
+export const DivFrameCarousel = styled.div`
+    padding-top:50px;
+`

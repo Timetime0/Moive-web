@@ -57,3 +57,7 @@ export const TableBooking = styled.div`
     height: 250px;
     overflow: auto;
 `
+
+export const ImgScreen = styled.img`
+    width: 100%;
+`

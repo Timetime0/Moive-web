@@ -13,3 +13,7 @@ export const LinkTinTuc = styled.a`
         border: 1px solid ${props=>props.theme.btnPrimaryColor}  !important;
     }
 `
+
+export const DivTinTuc = styled.div`
+    padding-top:85px;
+`

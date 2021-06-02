@@ -32,7 +32,7 @@ export const ButtonThem = styled.button`
         box-shadow: 0 0 0 0.2rem rgb(255 87 34 / 46%);
     }
     
-    }
+    
 `
 
 

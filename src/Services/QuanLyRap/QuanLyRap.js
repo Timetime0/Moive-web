@@ -28,6 +28,9 @@ export function DataThongTinLichChieuTheoHeThongRap(heThongRap){
 export function DataThongTinLichChieuTheoPhim(maPhim){
         return Axios({
             method:'GET',
-            url:`${BASE_URL}/api/QuanLyRap/LayThongTinLichChieuPhim?maPhim=${maPhim}`
+            url:`${BASE_URL}/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`
     })
 }
+
+
+// https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=1314

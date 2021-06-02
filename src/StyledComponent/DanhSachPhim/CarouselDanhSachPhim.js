@@ -155,3 +155,10 @@ export const DivArrow = styled.div`
     }
    
 `
+
+export const DivDanhSachPhim = styled.div`
+    padding-top:50px;
+    @media screen and (max-width:992px){
+        padding-top:0px;
+    }
+`

@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import Swal from 'sweetalert2'
 import { bookingTicket, getDataTicketRoom } from '../../../Services/QuanLyDatVe/QuanLyDatVe'
-import { GET_PHONGVE, GET_PHONGVE_SAGA, BOOKING_CHAIR_SAGA , BOOKING_CHAIR} from '../../Types/Admin/quanLyDatVe'
+import { GET_PHONGVE, GET_PHONGVE_SAGA, BOOKING_CHAIR_SAGA } from '../../Types/Admin/quanLyDatVe'
 
 function* getDataPhongVe(action) {
     try {

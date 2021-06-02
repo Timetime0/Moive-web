@@ -1,6 +1,6 @@
 import { call, put,  takeEvery,takeLatest  } from "@redux-saga/core/effects";
 import { DataDanhSachRap, DataThongTinCumRapTheoHeThong, DataThongTinLichChieuTheoHeThongRap, DataThongTinLichChieuTheoPhim } from "../../Services/QuanLyRap/QuanLyRap";
-import { GET_DATA_CUM_THEATER, GET_DATA_CUM_THEATER_SAGA, GET_DATA_LICHCHIEU_HETHONG, GET_DATA_LICHCHIEU_HETHONG_SAGA, GET_DATA_LICHCHIEU_MAPHIM, GET_DATA_LICHCHIEU_MAPHIM_SAGA, GET_INFOR_THEATER, GET_INFOR_THEATER_SAGA} from "../Types/dataRapPhim";
+import { GET_DATA_CUM_THEATER, GET_DATA_CUM_THEATER_SAGA, GET_DATA_LICHCHIEU_HETHONG, GET_DATA_LICHCHIEU_HETHONG_SAGA, GET_DATA_LICHCHIEU_MAPHIM, GET_DATA_LICHCHIEU_MAPHIM_SAGA, GET_INFOR_THEATER, GET_INFOR_THEATER_SAGA, GET_DATA_LICHCHIEU_MAPHIM_SAGA_FIND, GET_DATA_LICHCHIEU_MAPHIM_FIND} from "../Types/dataRapPhim";
 
 // Lay danh sach rap phim
 function * getDataRapPhim (action){
@@ -90,6 +90,37 @@ function* getDataThongTinLichChieuTheoMaPhim(action){
 export function* theoDoiActionGetDataThongTinLichChieuTheoMaPhim(){
     yield takeLatest (GET_DATA_LICHCHIEU_MAPHIM_SAGA,getDataThongTinLichChieuTheoMaPhim)
 }
+
+
+function* getDataThongTinLichChieuTheoMaPhimByFinding(action){
+    try{
+        const res = yield call(()=>{
+            return DataThongTinLichChieuTheoPhim(action.maPhim)
+        })
+ 
+        yield put({
+            type:GET_DATA_LICHCHIEU_MAPHIM_FIND,
+            data: res.data,
+        })
+    }catch(err){
+        console.log(err.response.data)
+    }
+ }
+ 
+ export function* theoDoiActionGetDataThongTinLichChieuTheoMaPhimFind(){
+     yield takeLatest (GET_DATA_LICHCHIEU_MAPHIM_SAGA_FIND,getDataThongTinLichChieuTheoMaPhimByFinding)
+ }
+ 
+
+
+
+ 
+ 
+
+
+
+
+
 
 
 // lấy thông tin lịch chiếu theo hệ thống rạp

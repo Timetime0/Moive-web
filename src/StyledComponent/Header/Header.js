@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import {keyframes} from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import { NavHashLink } from 'react-router-hash-link';
 
@@ -140,7 +141,40 @@ export const BtnHeader = styled.button`
 
 export const Nav = styled.nav`
     background-color: #0b1621;
+    position:fixed;
+    width:100%;
+    z-index: 100;
+    // top: -50px;
+    // margin-bottom: 20px;
+    &.nav-faded {
+        background-color: #040714;
+    }
 `
+
+const translateX = keyframes`
+from {
+    transform: translateY(-50px);
+    opacity:0;
+  }
+to {
+    transform: translateY(10px);
+    opacity:1;
+
+  }
+`;
+
+
+export const Nav1 = styled.nav`
+    background-color: #0b1621;
+    position:fixed;
+    width:100%;
+    z-index: 100;
+    top: -10px;
+    margin-bottom: 20px
+    animation: ${translateX} 0.5s ease-in-out;
+`
+
+
 export const ButtonToggle = styled.button`
     @media screen and (max-width:576px){
         font-size: 12px;

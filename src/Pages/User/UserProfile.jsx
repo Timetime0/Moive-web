@@ -53,7 +53,6 @@ class UserProfile extends Component {
             return (
                 <DivFrameIn4 className="in4">
                     {this.renderThongTinClient()}
-
                     <DivFrameBook className="in4_booking">
                         <h3>Thông Tin Đặt vé</h3>
                         <DivFrameTable className="pb-5">
@@ -70,7 +69,6 @@ class UserProfile extends Component {
                                 </tbody>
                             </table>
                         </DivFrameTable>
-
                     </DivFrameBook>
                 </DivFrameIn4>
             )

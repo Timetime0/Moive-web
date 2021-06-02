@@ -4,6 +4,7 @@ import styled from 'styled-components'
 export const BookingContent = styled.div`
     display:flex;
     flex-wrap: wrap;
+    padding-top:30px;
 `
 
 export const BookingImg = styled.div`
@@ -66,15 +67,15 @@ export const FormRadio = styled.div`
 `
 
 export const Form = styled.form`
-    padding: 50px 30px 20px 20px;
+    padding: 15px 30px 20px 20px;
     @media screen and (max-width:576px){
-        padding: 50px 5px 20px 10px;
+        padding: 15px 5px 20px 10px;
     }
 `
 export const FormLogin = styled.form`
     padding: 50px 20px 20px 20px;
     @media screen and (max-width:576px){
-        padding: 50px 5px 20px 10px;
+        padding:50px 5px 20px 10px;
     }
 `
 
@@ -88,7 +89,7 @@ export const FormGroup = styled.div`
 `
 
 export const FormInput = styled(FormGroup)`
-    padding-top: 15px; 
+    height: 60px;
     .displayNone{
         display:none;
     };
@@ -117,7 +118,7 @@ export const FormInput = styled(FormGroup)`
             border-bottom: 1px solid yellow;
         }
         transition: 0.3s ease;
-        padding-top: 10px;
+        padding-top: 15px;
         &:focus + .form-label,  &:valid + .form-label{
             top: 1px;
             font-size: 11px;
@@ -246,5 +247,7 @@ export const ImgFile = styled.img`
 ` 
 export const DivFile = styled.div`
     margin-top: 35px;
-
 ` 
+export const MessageErrors = styled.p`
+    color: red;
+`

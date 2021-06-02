@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { LinkTinTuc } from '../../StyledComponent/TinTuc/TinTuc'
+import { DivTinTuc, LinkTinTuc } from '../../StyledComponent/TinTuc/TinTuc'
 import DienAnh from './DienAnh'
 import KhuyenMai from './KhuyenMai'
 import Review from './Review'
@@ -8,7 +8,7 @@ import Review from './Review'
 class TinTuc extends Component {
     render() {
         return (
-            <div style={{marginTop:"80px"}} id="tinTuc">
+            <DivTinTuc id="tinTuc">
                 <ul className="nav nav-tabs d-flex justify-content-center" id="myTab" role="tablist">
                     <li className="nav-item" role="presentation">
                         <LinkTinTuc className="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Điện Ảnh 24h</LinkTinTuc>
@@ -31,7 +31,7 @@ class TinTuc extends Component {
                         <KhuyenMai/>
                     </div>
                 </div>
-            </div>
+            </DivTinTuc>
 
         )
     }

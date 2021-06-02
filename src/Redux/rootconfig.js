@@ -11,6 +11,8 @@ import {arrDataChiTetPhimReducer} from './Reducers/arrDataChiTetPhimReducer'
 import arrDataNguoiDungReducer from './Reducers/Admin/arrDataNguoiDungReducer'
 import userReducer from './Reducers/Login/userReducer'
 import arrDataPhongVeReducer from './Reducers/Admin/arrDataPhongVeReducer'
+import arrDanhGia from './Reducers/arrDanhGia'
+
 const middleWareSaga = createMiddleWareSaga();
 
 
@@ -24,7 +26,7 @@ const rootReducer = combineReducers({
     arrDataNguoiDungReducer,
     userReducer,
     arrDataPhongVeReducer,
-    
+    arrDanhGia,
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -17,7 +17,7 @@ padding: 5px;
     height: 60px !important;
 }
 @media screen and (max-width:576px){
-    height: 50px !important;
+    height: 60px !important;
     width: 90% !important;
 }
 `

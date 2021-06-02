@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { GET_DATA_LICHCHIEU_MAPHIM_SAGA, GET_INFOR_THEATER_SAGA } from '../../Redux/Types/dataRapPhim'
-import { DivFrameLogoLCP, ImgLogoRap, DivFrameLogoRap, ImglogoLCP, PlogoLCP, Btn } from '../../StyledComponent/ChiTietPhim/LichChieuPhim'
+import { DivFrameLogoLCP, ImgLogoRap, DivFrameLogoRap, ImglogoLCP, PlogoLCP, Btn, DivLogo1 } from '../../StyledComponent/ChiTietPhim/LichChieuPhim'
 import formatDate from 'date-format'
-import { Redirect } from 'react-router'
 import Swal from 'sweetalert2'
 import { withRouter } from "react-router";
 
@@ -58,11 +57,11 @@ class LichChieuPhim extends Component {
                     <Btn className="btn btn-outline-success"><h1>Chọn Cụm Rạp</h1></Btn>
                     <div className="row mt-2">
                     <div className="col-12">
-                        <div className="row justify-content-start">
+                        <div className="row justify-content-center">
                             {this.renderlogo()}
                         </div>
                     </div>
-                    <div className="col-12">
+                    <div className="col-12 p-0">
                         {this.state.showTab1 ? <table className="table table-striped table-dark">
                                 <thead>
                                     <tr>
@@ -93,10 +92,10 @@ class LichChieuPhim extends Component {
         const logo = this.state.logo[0]?.logo
         return cumRapChieuPhim?.map((item, index) => {
             return item.cumRapChieu?.map((cumRapChieu, index) => {
-                return <div className="col-2 text-center" key={index}>
+                return <DivLogo1 className="col-2 text-center" key={index}>
                     <ImglogoLCP className={this.state.index===index?`active`:''} onClick={() => this.handleOnClickLichChieu(index)} src={logo} alt="true" />
                     <PlogoLCP>{cumRapChieu.tenCumRap}</PlogoLCP>
-                </div>
+                </DivLogo1>
             })
         })
     }
@@ -155,7 +154,7 @@ class LichChieuPhim extends Component {
         const lichChieuPhim = this.state.lichChieuPhim.heThongRapChieu
         return (
             <div className="rapPhim">
-                <div className="container-md container-fluid">
+                <div className="container-lg container-fluid">
                     <Btn className="btn btn-outline-success"><h1>Chọn Rạp</h1></Btn>
                     <DivFrameLogoLCP className="logo mt-2">
                         <div className="row">
@@ -163,7 +162,7 @@ class LichChieuPhim extends Component {
                         </div>
                     </DivFrameLogoLCP>
                 </div>
-                <div className="container">
+                <div className="container-lg container-fluid">
                     {lichChieuPhim ? this.renderFrameLichChieu() : ''}
                 </div>
             </div>

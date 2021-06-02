@@ -8,6 +8,7 @@ export const ContainerLogin = styled.section`
     flex-direcion: column;
     text-align: center;
     height: 100vh;
+    padding-top:90px;
 `
 
 export const Content = styled.div`
@@ -120,7 +121,7 @@ export const ButtonModalSignUp = styled.button`
 
 export const DivModalLogin = styled.div`
     max-width:50%;
-    margin-top: 40px;
+    margin-top: 60px;
     width:70%;
     position:relative;
     @media screen and (max-width:1200px){

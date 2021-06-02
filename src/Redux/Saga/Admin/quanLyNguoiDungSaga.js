@@ -10,7 +10,7 @@ function* getDataNguoiDungApi(action){
         type: DISPLAY_WAITING
     })
 
-    yield delay(1500)
+    yield delay(2000)
 
     try{
         let result = yield call(()=>{
@@ -36,6 +36,9 @@ export function* theoDoiActionGetDataNguoiDungApi() {
 
 
 function* getDataNguoiDungTheoTrangApi(action){
+    yield put({
+        type: DISPLAY_WAITING
+    })
     try{
         let result = yield call(()=>{
             return getDataNguoiDungPhanTrang(action.soTrang, action.soPhanTuTrang)
@@ -50,6 +53,10 @@ function* getDataNguoiDungTheoTrangApi(action){
     catch(err){
         console.log(err)
     }
+    yield put({
+        type: HIDDEN_WAITING
+    })
+
 }
 
 export function* theoDoiActionGetDataNguoiDungTheoTrangApi() {

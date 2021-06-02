@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { BOOKING_CHAIR_SAGA, CHOICE_GHE, DELETE_GHE, GET_PHONGVE_SAGA } from '../../Redux/Types/Admin/quanLyDatVe'
 import CaroselChiTietPhim from './CaroselChiTietPhim'
-import { BtnGhe, BtnMau, DivFrameDanhSachChonGhiChu, DivFrameIcon, DivFrame, Td, TableBooking } from '../../StyledComponent/Booking/booking'
+import { BtnGhe, BtnMau, DivFrameDanhSachChonGhiChu, DivFrameIcon, DivFrame, Td, TableBooking, ImgScreen } from '../../StyledComponent/Booking/booking'
 import Swal from 'sweetalert2'
+import screen from '../../Assets/img/Booking/screen.png'
+import CountdownClock from './CountdownClock'
 
 class Booking extends Component {
 
@@ -55,7 +57,7 @@ class Booking extends Component {
         if (chiTiet) {
             return (
                 <DivFrame className="col-12 text-center">
-                    <img src={chiTiet.hinhAnh} alt="" />
+                    <img src={chiTiet.hinhAnh} alt="" style={{width:'100%'}}/>
                     <p>Rạp: {chiTiet.tenCumRap} </p>
                     <p>{chiTiet.diaChi}</p>
                     <p>{chiTiet.tenRap} lúc <span>{chiTiet.gioChieu}</span> ngày <span>{chiTiet.ngayChieu}</span></p>
@@ -107,10 +109,12 @@ class Booking extends Component {
             if (result.isConfirmed) {
                 const danhSachGhe = this.props.danhSachGhe
                 const arr = danhSachGhe.filter(item=>item.dangChon===true)
+
                 const data = {
                     maLichChieu:this.props.match.params.maLichChieu,
                     danhSachVe:arr,
                 }
+                
                 this.props.dispatch({
                     type: BOOKING_CHAIR_SAGA,
                     object: data,
@@ -182,7 +186,11 @@ class Booking extends Component {
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-md-8 text-center">
-                                <h1>Danh Sách Ghế</h1>
+                                <div>
+                                    <h1>Thời gian giữ ghế</h1>
+                                    <CountdownClock/>
+                                </div>
+                                <ImgScreen src={screen} alt="true"/>
                                 {this.renderGhe()}
                             </div>
                             <div className="col-md-4">

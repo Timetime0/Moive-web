@@ -5,7 +5,7 @@
 export const darkTheme = {
   
 //  Background
-    bgPrimaryColor: '#222',
+    bgPrimaryColor: '#040714',
     bgSeconderyColor: '#343a40',
     bgColor: 'white',
    

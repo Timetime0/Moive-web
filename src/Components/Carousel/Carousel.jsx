@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 // import Modal from 'react-bootstrap/Modal'
 import { DivBgBehind, DivImgFrame, DivPosition, SpanLeft, SpanRight, I, DivPositionHeader, DivRowHeader, DivRowFooter, DivDetail, DivLeftAim, DivRightAim, DivFrame, DivCarouselCaption, Content, DivModal, Iframe, ButtonIframe, DivRight } from '../../StyledComponent/Carousel/DivPosition.js'
 import { Img, ImgBehind } from '../../StyledComponent/Carousel/Img.js'
-import { ButtonImg, LinkPlay, LinkClick, LiCarosel } from '../../StyledComponent/Carousel/Link.js'
+import { ButtonImg, LinkPlay, LinkClick, LiCarosel, DivFrameCarousel } from '../../StyledComponent/Carousel/Link.js'
 import { P } from '../../StyledComponent/Container/Header.js'
 
 
@@ -95,7 +95,7 @@ class Carousel extends Component {
 
     render() {
         return (
-            <div>
+            <DivFrameCarousel>
                 <div id="carouselExampleCaptions" className="carousel slide" data-ride="carousel">
                     <ol className="carousel-indicators">
                         <LiCarosel data-target="#carouselExampleCaptions" data-slide-to={0} className="active" />
@@ -137,7 +137,7 @@ class Carousel extends Component {
                         </DivModal>
                     </div>
                 </div>
-            </div>
+            </DivFrameCarousel>
         )
     }
 

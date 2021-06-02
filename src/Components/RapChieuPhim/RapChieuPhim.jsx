@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { GET_DATA_CUM_THEATER_SAGA, GET_INFOR_THEATER_SAGA } from '../../Redux/Types/dataRapPhim'
-import { DivFrameLogoRap, ImgLogoRap, DivNameRap, DivHoverLogo, DivTenCumRap, ImgCarousel, DivFrameCarousel, LinkRap, Logo } from '../../StyledComponent/RapChieuPhim/RapChieuPhim'
+import { DivFrameLogoRap, ImgLogoRap, DivNameRap, DivHoverLogo, DivTenCumRap, ImgCarousel, DivFrameCarousel, LinkRap, Logo, DivRapChieuPhim } from '../../StyledComponent/RapChieuPhim/RapChieuPhim'
 import hinhAnh from '../../Assets/img/rapChieuPhim/lich-chieu-1.jpg'
 import { DivChiTietRap, DivScreen, ImgLogoCumRap } from '../../StyledComponent/RapChieuPhim/CumRap'
 import { getRenderChiTietRap } from '../../Redux/Actions/arrRapPhimAction'
+import { DISPLAY_WAITING, HIDDEN_WAITING } from '../../Redux/Types/waitingType'
 
 let logo = ''
 
@@ -72,10 +73,21 @@ class RapChieuPhim extends Component {
         return count
     }
 
+    setTimeOut = ()=>{
+        setTimeout(()=>{
+            this.props.dispatch({
+                type:HIDDEN_WAITING
+            })
+        },1000)
+    }
+
+
+
     render() {
+        this.setTimeOut()
         const {logo, chiTiet} = this.props.renderGiaoDien
         return (
-            <div className="rapPhim">
+            <DivRapChieuPhim className="rapPhim">
                 <div className="container-md container-fluid">
                     <Logo className="logo">
                         <div className="row">
@@ -108,13 +120,16 @@ class RapChieuPhim extends Component {
                         </>:""}
                     </div>
                 </DivChiTietRap>
-            </div>
+            </DivRapChieuPhim>
         )
     }
 
 
-    async componentDidMount() {
+    componentDidMount() {
         this.props.dispatch({ type: GET_INFOR_THEATER_SAGA })
+        this.props.dispatch({
+            type:DISPLAY_WAITING
+        })
     }
 }
 

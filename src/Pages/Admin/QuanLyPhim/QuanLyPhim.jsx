@@ -77,7 +77,6 @@ class QuanLyPhim extends Component {
 
     renderPaging = () => {
         const number = this.props.danhSachPhimTheoTrang.totalPages
-        console.log(number)
         const arr = []
         for (let i = 0; i < number; i++) {
             arr.push(i)

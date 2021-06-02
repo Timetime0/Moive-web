@@ -27,7 +27,6 @@ class DangNhap extends Component {
 
     handleSubmit = (e)=>{
         e.preventDefault()
-        console.log(1)
         this.props.dispatch({
             type:LOGIN_USER_SAGA,
             user: this.state.user,
@@ -48,11 +47,11 @@ class DangNhap extends Component {
                     <FormLogin id="booking-form" onSubmit={(event)=>this.handleSubmit(event)}>
                         <h2 className="text-center">Đăng Nhập</h2>
                         <FormInput className="form-group form-input">
-                            <input onChange={this.onChangeValue} type="text" name="taiKhoan" id="taiKhoan"  required />
+                            <input onChange={this.onChangeValue} type="text" name="taiKhoanLogin" required />
                             <label htmlFor="taiKhoan" className="form-label">Tài khoản</label>
                         </FormInput>
                         <FormInput className="form-group form-input">
-                            <input onChange={this.onChangeValue} type="text" name="matKhau" id="matKhau"  required />
+                            <input onChange={this.onChangeValue} type="text" name="matKhau" required />
                             <label htmlFor="matKhau" className="form-label">Mật khẩu</label>
                         </FormInput>
                         <div className="form-submit text-center">

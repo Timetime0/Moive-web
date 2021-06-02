@@ -93,4 +93,3 @@ export const ButtonQuangCao = styled.button`
         background-color:${props=>props.theme.textColorSecond};
     }
 `
-

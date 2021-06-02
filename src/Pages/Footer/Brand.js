@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 class Brand extends Component {
     render() {
         return (
-            <div>
+            <div style={{paddingTop:'90px'}}>
                 <div ui-view="content" id="mainContent" className="container-fluid ng-scope m-0 p-0">
                     <div ui-view className="ng-scope">
                         <div id="guideline" className="ng-scope">

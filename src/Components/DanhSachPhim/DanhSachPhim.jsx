@@ -4,7 +4,7 @@ import { GET_DATA_PHIM_SAGA } from '../../Redux/Types/DataPhimType'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-import { DivListPhimItem, DivDanhGia, DivDatVe, ImgListPhim, DivListPhimFrame, ButtonListPhim, DivContent, DivColorStar, SliderCostum, DivArrow } from '../../StyledComponent/DanhSachPhim/CarouselDanhSachPhim'
+import { DivListPhimItem, DivDanhGia, DivDatVe, ImgListPhim, DivListPhimFrame, ButtonListPhim, DivContent, DivColorStar, SliderCostum, DivArrow, DivDanhSachPhim } from '../../StyledComponent/DanhSachPhim/CarouselDanhSachPhim'
 import { DivChiTietFrame, DivImgChiTiet, ImgChiTiet, DivPhimContent, DivHoverPopup, DivPlay, DivCount, DivLinkYoutube, StyledPopup, IframeYoutube } from '../../StyledComponent/DanhSachPhim/ChiTietPhim'
 import { changeChitietPhim } from '../../Redux/Actions/objectPhimAction'
 import '../../../node_modules/reactjs-popup/dist/index.css'
@@ -167,7 +167,7 @@ class DanhSachPhim extends Component {
         };
 
         return (
-            <div className="container-md container-fluid" id="lichChieuPhim">
+            <DivDanhSachPhim className="container-md container-fluid" id="lichChieuPhim">
                 <div className="listPhim row" style={{ position: 'relative' }}>
                     <div className="col-6 phim">
                         {this.handleChiTietPhim()}
@@ -185,7 +185,7 @@ class DanhSachPhim extends Component {
                     </DivArrow>
                 </div>
 
-            </div>
+            </DivDanhSachPhim>
         )
     }
 
