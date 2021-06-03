@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component, PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { BtnHeader, ButtonToggle, ImgLogo, Nav, NavHashLinkT, NavLinkT } from '../../StyledComponent/Header/Header'
 import { NavLink } from 'react-router-dom'
 import { withRouter } from "react-router";
 import { LOGOUT_USER } from '../../Redux/Types/auth-type';
 
-export class Header extends Component {
+export class Header extends PureComponent {
     constructor(props) {
         super(props)
         this.state = {
@@ -14,7 +14,6 @@ export class Header extends Component {
             show_fixNav: true,
         }
     }
-
 
     hanleLogOut = () => {
         localStorage.removeItem('client')
@@ -65,6 +64,7 @@ export class Header extends Component {
 
 
     render() {
+        console.log("Header")
         return (
             <Nav className={this.state.show_fixNav?'navbar navbar-expand-md navbar-dark py-0':'navbar navbar-expand-md navbar-dark py-0 nav-faded'}>
                     <NavLink className="navbar-brand m-0" to="/" id="timetime" > <ImgLogo src="/Assets/img/logo/logo-removebg.png" alt="true" /></NavLink >
@@ -97,10 +97,8 @@ export class Header extends Component {
                     </ButtonToggle>
             </Nav >
         )
-        
     }
     
-
 
     componentDidUpdate(prevProps, prevState) {
         if (prevState.admin !== this.props.admin) {

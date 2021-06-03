@@ -47,11 +47,11 @@ class DangNhap extends Component {
                     <FormLogin id="booking-form" onSubmit={(event)=>this.handleSubmit(event)}>
                         <h2 className="text-center">Đăng Nhập</h2>
                         <FormInput className="form-group form-input">
-                            <input onChange={this.onChangeValue} type="text" name="taiKhoanLogin" required />
+                            <input onChange={this.onChangeValue} type="text" name="taiKhoanLogin" required autoComplete='off'/>
                             <label htmlFor="taiKhoan" className="form-label">Tài khoản</label>
                         </FormInput>
                         <FormInput className="form-group form-input">
-                            <input onChange={this.onChangeValue} type="text" name="matKhau" required />
+                            <input onChange={this.onChangeValue} type="text" name="matKhau" required autoComplete='off'/>
                             <label htmlFor="matKhau" className="form-label">Mật khẩu</label>
                         </FormInput>
                         <div className="form-submit text-center">

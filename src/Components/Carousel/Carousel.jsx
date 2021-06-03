@@ -94,6 +94,7 @@ class Carousel extends Component {
     }
 
     render() {
+        console.log('carousel')
         return (
             <DivFrameCarousel>
                 <div id="carouselExampleCaptions" className="carousel slide" data-ride="carousel">

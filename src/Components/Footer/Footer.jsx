@@ -12,6 +12,7 @@ import '../../Assets/OwlCarousel/owl.theme.default.css'
 export class Footer extends Component {
 
     render() {
+        console.log('footer')
         const settings = {
             dots: false,
             items: 11,

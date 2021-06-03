@@ -115,15 +115,16 @@ export const FormInput = styled(FormGroup)`
         border-bottom: 1px solid ${props=>props.theme.btnPrimaryColor};
         padding: 4px 0;
         &:focus {
-            border-bottom: 1px solid yellow;
+            border-bottom: 1px solid ${props=>props.theme.btnPrimaryColor};
         }
         transition: 0.3s ease;
         padding-top: 15px;
         &:focus + .form-label,  &:valid + .form-label{
             top: 1px;
             font-size: 11px;
-            color: yellow;
-            border:none
+            color: ${props=>props.theme.btnPrimaryColor};
+            font-weight:600;
+            border:none;
         }
     };
   
