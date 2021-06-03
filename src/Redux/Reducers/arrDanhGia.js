@@ -21,11 +21,10 @@ const arrDanhGia = (state = initialState, action) => {
     switch (action.type) {
         case ADD_COMMENTS:{
             const newArrDanhGia = [...state.danhGia]
-            const index = newArrDanhGia.findIndex((item)=>item.maPhim===action.maPhim)
-            const object = newArrDanhGia.filter((item)=>item.maPhim===action.maPhim)
-            const newComment = object.comments.push(action.object)
-            newArrDanhGia[index] = {...newArrDanhGia[index], comments:newComment}
-            state.danhGia[index] =  newArrDanhGia[index]
+            const index = newArrDanhGia.findIndex((item)=>item.maPhim === +action.maPhim)
+
+            const object = newArrDanhGia.filter((item)=>item.maPhim === +action.maPhim)
+            object[0].comments.push(action.object)
             return {...state}
         }
     default:{return state}

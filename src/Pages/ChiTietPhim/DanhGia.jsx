@@ -57,25 +57,20 @@ class DanhGia extends Component {
 
     handleOnSubmit = ()=>{
         const user =(localStorage.getItem('client'))
-
         if(user){
             const {noiDung} = this.state.comments
             if(noiDung){
                 const client = JSON.parse(localStorage.getItem('client'))
-                const day = new Date()
-                console.log(day)
-                this.setState({
-                    comments:{
-                        ...this.state.comments,
-                        taiKhoan: client.taiKhoan,
-                        ngayThang: day
-                    }
-                })
                 this.props.dispatch({
                     type:ADD_COMMENTS,
                     maPhim: this.props.match.params.maPhim,
-                    object:this.state.comments,
+                    object:{
+                        taiKhoan:client.taiKhoan,
+                        noiDung:this.state.comments.noiDung,
+                        ngayThang:new Date(),
+                    }
                 })
+                this.forceUpdate()
             }
         }else{
             Swal.fire({
@@ -94,6 +89,14 @@ class DanhGia extends Component {
               })
         }
        
+        this.setState({
+            comments:{
+                ...this.state.comments,
+                noiDung:'',
+            }
+        })
+        this.updateNumber()
+        this.forceUpdate()
     }
 
     render() {
@@ -118,7 +121,7 @@ class DanhGia extends Component {
 
                 <div className="commentsOfyour text-center pt-5">
                     <div className="form-group">
-                        <Text className="form-input" name="noiDung" required="" placeholder="Your text" onChange={this.handleOnChange}></Text>
+                        <Text className="form-input" name="noiDung" required="" value={this.state.comments.noiDung}placeholder="Your text" onChange={this.handleOnChange}></Text>
                     </div>
                     <BtnDg onClick={this.handleOnSubmit} className="btn btn-success">Gởi</BtnDg>
                 </div>
@@ -126,7 +129,9 @@ class DanhGia extends Component {
         )
     }
 
-    componentDidMount(){
+
+
+    updateNumber = ()=>{
         const { danhGia } = this.props
         const maPhim = this.props.match.params.maPhim
         if (danhGia) {
@@ -139,9 +144,9 @@ class DanhGia extends Component {
         }
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot){
 
-
+    componentDidMount(){
+        this.updateNumber()
     }
 
 }

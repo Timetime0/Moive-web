@@ -86,6 +86,7 @@ function* authDangNhapUser(action) {
             return loginNguoiDung(action.user)
         })
 
+        console.log(result)
         if (result.status === 200){
             if(result.data.maLoaiNguoiDung === "KhachHang"){
                 localStorage.setItem("client", JSON.stringify(result.data))
