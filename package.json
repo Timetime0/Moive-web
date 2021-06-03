@@ -2,15 +2,12 @@
   "name": "movie-web",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "14.x",
-    "npm":"7.x"
-  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
+    "date-format": "^3.0.0",
     "formik": "^2.2.8",
     "jquery": "^3.6.0",
     "react": "^17.0.2",
