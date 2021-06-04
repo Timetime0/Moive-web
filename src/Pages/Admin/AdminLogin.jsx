@@ -63,7 +63,12 @@ class AdminLogin extends Component {
                                 <input type="submit" value="Đăng nhập" className="submit btn btn-success" id="submit" name="submit" />
                             </div>
                         </Form>
+                        <div>
+                            <p>Tài khoản: aaa1</p>
+                            <p>Mât khẩu: aaa1</p>
+                        </div>
                     </BookingFormAdmin>
+
                 </BookingContent>
             )
         } else {
