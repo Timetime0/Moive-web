@@ -7,7 +7,7 @@ const initialState = {
         admin:"",
         in4Client:"",
     },
-    showModal:true,
+    showModal:'',
 }
 
 const userReducer = (state = initialState, action) => {

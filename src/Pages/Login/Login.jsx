@@ -10,10 +10,15 @@ class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            showModal: true
+            showModal: false
         }
     }
 
+    onClickModal = ()=>{
+        this.setState({
+            showModal: true
+        })
+    }
 
     render() {
         return (
@@ -22,10 +27,10 @@ class Login extends Component {
                     <BgImage />
                     <DivFrameLogin>
                         <h2 style={{ paddingBottom: 80 }}>TimeTime Cinemax <br></br> đang chờ bạn <br></br> ^O^ </h2>
-                        <p style={{paddingBottom:'20px'}}>Tài khoản: banhbo <br></br> Mật khẩu: banhbo</p>
+                        <p style={{paddingBottom:'20px'}}>Tài khoản: string <br></br> Mật khẩu: string</p>
 
                         <LinkImgLogin>
-                            <DivImgLogin data-toggle="modal" data-target="#login" inputBgColor="#3f64b7" inputBgColorHover="#fff">
+                            <DivImgLogin onClick={this.onClickModal} data-toggle="modal" data-target="#login" inputBgColor="#3f64b7" inputBgColorHover="#fff">
                                 <i style={{ padding: '0 25px', lineHeight: '25px' }} className="fab fa-facebook-f"></i>
                                 <PLogin className="login__p">Login with Facebook</PLogin>
                             </DivImgLogin>
@@ -33,14 +38,14 @@ class Login extends Component {
 
 
                         <LinkImgLogin>
-                            <DivImgLogin data-toggle="modal" data-target="#login" inputBgColor="#000" inputBgColorHover="#fff">
+                            <DivImgLogin onClick={this.onClickModal} data-toggle="modal" data-target="#login" inputBgColor="#000" inputBgColorHover="#fff">
                                 <i style={{ padding: '0 25px', lineHeight: '25px' }} className="fab fa-github"></i>
                                 <PLogin className="login__p">Login with Git</PLogin>
                             </DivImgLogin>
                         </LinkImgLogin>
 
                         <LinkImgLogin>
-                            <DivImgLogin data-toggle="modal" data-target="#login" inputBgColor="#4285f4" inputBgColorHover="#fff">
+                            <DivImgLogin onClick={this.onClickModal} data-toggle="modal" data-target="#login" inputBgColor="#4285f4" inputBgColorHover="#fff">
                                 <i style={{ padding: '0 25px', lineHeight: '25px' }} className="fab fa-google"></i>
                                 <PLogin inputBgColor="#000" className="login__p">Login with Google</PLogin>
                             </DivImgLogin>
