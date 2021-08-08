@@ -247,8 +247,15 @@ export const ImgFile = styled.img`
 
 ` 
 export const DivFile = styled.div`
-    margin-top: 35px;
+    display: flex;
+    margin-top: 5px;
 ` 
+
+export const DivBtnImg = styled.div`
+    height: 40px
+`
+
+
 export const MessageErrors = styled.p`
     color: red;
 `

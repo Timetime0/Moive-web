@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { ADD_IMG_PHIM_SAGA, UPDATE_IMG_PHIM_SAGA } from '../../../Redux/Types/Admin/quanLyPhimType'
 import { ButtonThem, DivFrameBtn } from '../../../StyledComponent/Admin/QuanLyNguoiDung/quanLyNguoiDung'
-import { BookingContent, FormInput, FormPhimAd, BookingFormPhimAd, ImgFile, DivFile } from '../../../StyledComponent/Login/DangKyStyled'
+import { BookingContent, FormInput, FormPhimAd, BookingFormPhimAd, ImgFile, DivFile, DivBtnImg } from '../../../StyledComponent/Login/DangKyStyled'
 import $ from 'jquery';
 
 class FormPhim extends Component {
@@ -51,7 +51,7 @@ class FormPhim extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         const status = this.props.status
-        console.log(this.state.phim)
+        this.props.onHiddenModal()
         if (status === "fix") {
             this.props.dispatch({
                 type: UPDATE_IMG_PHIM_SAGA,
@@ -116,18 +116,7 @@ class FormPhim extends Component {
                                 <label htmlFor="trailer" className="form-label">Trailer (Đường Link)</label>
                             </FormInput>
 
-                            <FormInput className="form-group form-input displayNone col-6" autoFocus={false}>
-                                <input type="file" name="hinhAnh" id="hinhAnh" required onChange={event => {
-                                    this.getNameImg(event)
-                                }} style={{ display: 'none' }} />
-                                <label htmlFor="hinhAnh" className="form-label">Hình Ảnh (*.jpg, *.png, *.gif!)</label>
-                                <DivFile type="button" className="">
-                                    <div onClick={() => $('#hinhAnh').click()} className="btn btn-success">Chọn hình ảnh</div>
-                                    {/* <PFile>{this.state.nameHinhAnh}</PFile> */}
-                                    {this.state.basa64HinhAnh ? <ImgFile  src={this.state.basa64HinhAnh} alt="true" /> : ""}
-                                </DivFile>
-
-                            </FormInput>
+            
 
                             <FormInput className="form-group form-input displayNone  col-6" >
                                 <input onChange={this.onChangeValue} type="text" name="moTa" id="moTa" value={this.state.phim.moTa} required autoComplete='off' />
@@ -142,6 +131,18 @@ class FormPhim extends Component {
                             <FormInput className="form-group form-input displayNone  col-6" >
                                 <input onChange={this.onChangeValue} type="text" name="danhGia" id="danhGia" value={this.state.phim.danhGia} required autoComplete='off' />
                                 <label htmlFor="danhGia" className="form-label">Đánh Giá (0 đến 10)</label>
+                            </FormInput>
+
+                            <FormInput className="form-group form-input displayNone col-6" autoFocus={  false} style={{paddingLeft: '0px'}}>
+                                <input type="file" name="hinhAnh" id="hinhAnh" onChange={event => {
+                                    this.getNameImg(event)
+                                }} style={{ display: 'none' }} />
+                                <label htmlFor="hinhAnh" >Hình Ảnh (*.jpg, *.png, *.gif)</label>
+                                <DivFile type="button" className="">
+                                    <DivBtnImg onClick={() => $('#hinhAnh').click()} className="btn btn-success">Chọn hình ảnh</DivBtnImg>
+                                    {/* <PFile>{this.state.nameHinhAnh}</PFile> */}
+                                    {this.state.basa64HinhAnh ? <ImgFile  src={this.state.basa64HinhAnh} alt="true" /> : ""}
+                                </DivFile>
                             </FormInput>
 
                             <DivFrameBtn className="form-submit text-right mt-4 ">

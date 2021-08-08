@@ -105,7 +105,10 @@ class AdminLogin extends Component {
               </div>
             </Form>
             <div>
-              <p>Tài khoản: kadmin</p>
+              <p>Trang admin chỉ ở màn hình laptop</p>
+              <p>Tài khoản: 123@admin</p>
+              <p>Mât khẩu: string</p>
+              <p>Tài khoản: phi131212</p>
               <p>Mât khẩu: 123456</p>
             </div>
           </BookingFormAdmin>

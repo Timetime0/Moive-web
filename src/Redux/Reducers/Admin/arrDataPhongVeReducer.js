@@ -19,18 +19,18 @@ const arrDataPhongVeReducer = (state = initialState, action) => {
 
             if (index !== -1) {
                 let oldChair = state.danhSachGhe[index]
-                let newChair = { ...oldChair, dangChon:!oldChair.dangChon}
+                let newChair = { ...oldChair, dangChon: !oldChair.dangChon }
                 state.danhSachGhe[index] = newChair
             }
             return { ...state }
         }
 
-        case DELETE_GHE:{
+        case DELETE_GHE: {
             const { maGhe } = action
             const index = state.danhSachGhe.findIndex((item) => item.maGhe === maGhe)
             if (index !== -1) {
                 let oldChair = state.danhSachGhe[index]
-                let newChair = { ...oldChair, dangChon:false}
+                let newChair = { ...oldChair, dangChon: false }
                 state.danhSachGhe[index] = newChair
             }
             return { ...state }

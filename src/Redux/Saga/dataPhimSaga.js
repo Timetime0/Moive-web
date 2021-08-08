@@ -70,6 +70,7 @@ function* getDataPhimTheoTrang(action){
         let res = yield call(()=>{
             return DataDanhSachPhimTheoTrang(action.soTrang,action.soPhanTuTrang)
         })
+        
         yield put({
             type:GET_DATA_PHIM_THEOTRANG,
             payload:res.data,

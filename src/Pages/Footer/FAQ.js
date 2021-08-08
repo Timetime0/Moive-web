@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import {   Link  } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class FAQ extends Component {
     render() {
         return (
 
-            <div className="row" style={{paddingTop:'90px'}}>
+            <div className="row" style={{ paddingTop: '90px' }}>
                 <div className="col-3">
                     <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <Link className="nav-link " id="v-pills-home-tab" data-toggle="pill" to="/noidung/thoathuan" role="tab" aria-controls="v-pills-home" aria-selected="true">Thỏa thuận sử dụng</Link>
@@ -178,11 +178,11 @@ class FAQ extends Component {
         )
     }
 
-    goToTheHeader = ()=>{
+    goToTheHeader = () => {
         return window.$('html,body').scrollTop(0);
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.goToTheHeader()
     }
 }

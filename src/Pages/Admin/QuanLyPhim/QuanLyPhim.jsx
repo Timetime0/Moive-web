@@ -5,6 +5,7 @@ import { GET_DATA_PHIM_SAGA } from '../../../Redux/Types/DataPhimType'
 import { ButtonAd, ButtonThem, DivDetailSearch, DivFrameSeacch, DivModalAd, Li, Trang } from '../../../StyledComponent/Admin/QuanLyNguoiDung/quanLyNguoiDung'
 import {  ButtonCloseAdPhim } from '../../../StyledComponent/Login/DangKyStyled'
 import FormPhim from './FormPhim'
+import $ from 'jquery'
 
 class QuanLyPhim extends Component {
 
@@ -19,7 +20,6 @@ class QuanLyPhim extends Component {
             phim: '',
         }
     }
-
 
     onChangInput = (e) => {
         const { value } = e.target
@@ -72,7 +72,6 @@ class QuanLyPhim extends Component {
             soPhanTuTrang: 5,
         })
     }
-
 
 
     renderPaging = () => {
@@ -165,6 +164,10 @@ class QuanLyPhim extends Component {
         })
     }
 
+    onHiddenModal = ()=>{
+        $("#modalPhim .close").click()
+    }
+
     render() {
         return (
             <div className="container-fluid">
@@ -230,13 +233,13 @@ class QuanLyPhim extends Component {
                 </div>
 
                 <div className="modal fade" id="PhimAdmin" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <DivModalAd className="modal-dialog">
+                    <DivModalAd className="modal-dialog" id="modalPhim">
                         <div className="modal-content">
                             <div className="modal-body">
                                 <ButtonAd type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">x</span>
                                 </ButtonAd>
-                                <FormPhim status={this.state.status} phim={this.state.phim} selected={this.state.selected} trangCuoi={this.props.danhSachPhimTheoTrang.totalPages}/>
+                                <FormPhim onHiddenModal={this.onHiddenModal} status={this.state.status} phim={this.state.phim} selected={this.state.selected} trangCuoi={this.props.danhSachPhimTheoTrang.totalPages}/>
                                 <ButtonCloseAdPhim type="button" className="btn btn-danger" data-dismiss="modal">Close</ButtonCloseAdPhim>
                             </div>
                         </div>

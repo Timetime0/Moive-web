@@ -10,8 +10,8 @@ function* authDangNhap(action) {
             return loginNguoiDung(action.user)
         })
 
-        if (result.status === 200){
-            if(result.data.maLoaiNguoiDung === "QuanTri"){
+        if (result.status === 200) {
+            if (result.data.maLoaiNguoiDung === "QuanTri") {
                 localStorage.setItem("admin", JSON.stringify(result.data))
                 Swal.fire({
                     icon: 'success',
@@ -28,7 +28,7 @@ function* authDangNhap(action) {
                     title: 'Tài khoản hoặc mật khẩu không chính xác!',
                 })
             }
-        } 
+        }
     } catch (err) {
         console.log(err)
         Swal.fire({
@@ -50,7 +50,7 @@ function* authDangKy(action) {
         })
 
         console.log(result)
-        if (result.status === 200){
+        if (result.status === 200) {
             Swal.fire({
                 icon: 'success',
                 title: 'Đăng nhập thành công!',
@@ -85,10 +85,8 @@ function* authDangNhapUser(action) {
         let result = yield call(() => {
             return loginNguoiDung(action.user)
         })
-
-        console.log(result)
-        if (result.status === 200){
-            if(result.data.maLoaiNguoiDung === "KhachHang"){
+        if (result.status === 200) {
+            if (result.data.maLoaiNguoiDung === "KhachHang") {
                 localStorage.setItem("client", JSON.stringify(result.data))
                 Swal.fire({
                     icon: 'success',
@@ -105,7 +103,7 @@ function* authDangNhapUser(action) {
                     title: 'Tài khoản hoặc mật khẩu không chính xác!',
                 })
             }
-        } 
+        }
     } catch (err) {
         console.log(err)
         Swal.fire({
